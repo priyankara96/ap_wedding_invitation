@@ -1,1 +1,1 @@
-# ap_wedding_invitation
+# Amanda & Priyankara wedding invitation
