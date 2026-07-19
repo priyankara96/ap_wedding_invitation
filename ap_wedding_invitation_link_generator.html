@@ -318,15 +318,18 @@ body {
     var origin = window.location.origin;
     var pathname = window.location.pathname;
     
-    // Remove index.html or generator.html if present
-    var dir = pathname.substring(0, pathname.lastIndexOf('/'));
+    // Clean up pathname to get the directory containing index.html
+    var cleanPath = pathname.replace(/(ap_wedding_invitation_link_generator\.html|ap_wedding_invitation_link_generator\/?|index\.html)$/, '');
+    if (!cleanPath.endsWith('/')) {
+      cleanPath += '/';
+    }
     
     // If running on a web server (http/https), use clean root "/" url.
     // If running locally from file://, target "index.html" explicitly.
     var isHttp = origin.indexOf('http') === 0;
-    var fileTarget = isHttp ? "/" : "/index.html";
+    var fileTarget = isHttp ? "" : "index.html";
     
-    var baseUrl = origin + dir + fileTarget;
+    var baseUrl = origin + cleanPath + fileTarget;
     if (guestName) {
       return baseUrl + "?to=" + encodeURIComponent(guestName);
     }
