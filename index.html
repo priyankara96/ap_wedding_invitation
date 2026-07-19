@@ -1056,6 +1056,72 @@
           border-color 0.2s,
           box-shadow 0.2s;
       }
+      .field input[type="number"]::-webkit-outer-spin-button,
+      .field input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .field input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+      .guest-stepper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .guest-stepper-btn {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--ivory);
+        color: var(--ink);
+        font-size: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .guest-stepper-btn:active {
+        transform: scale(0.97);
+      }
+      .guest-stepper-btn:hover {
+        border-color: var(--gold-bright);
+      }
+      .guest-stepper input {
+        text-align: center;
+        min-width: 0;
+      }
+      .guest-pill-row {
+        display: none;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .guest-pill {
+        min-width: 42px;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--ivory);
+        color: var(--ink-soft);
+        font-family: "Cinzel", serif;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .guest-pill.active {
+        background: var(--gold);
+        color: #fff;
+        border-color: var(--gold);
+      }
       .field input::placeholder,
       .field textarea::placeholder {
         color: rgba(44, 31, 8, 0.35);
@@ -1152,6 +1218,66 @@
         color: var(--ink-soft);
         margin-top: 12px;
         opacity: 0.7;
+      }
+      .contact-strip {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(184, 134, 26, 0.06),
+          rgba(184, 134, 26, 0.12)
+        );
+        text-align: center;
+      }
+      .contact-strip .contact-title {
+        font-family: "Cinzel", serif;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .contact-strip .contact-row {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 15px;
+        color: var(--ink);
+      }
+      .contact-strip .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        position: relative;
+        padding-right: 12px;
+      }
+      .contact-strip .contact-item:last-child {
+        padding-right: 0;
+      }
+      .contact-strip .contact-item + .contact-item::before {
+        content: "|";
+        position: absolute;
+        left: -13px;
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .contact-strip .contact-label {
+        font-family: "Cinzel", serif;
+        font-size: 8px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .contact-strip a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .contact-strip a:hover {
+        color: var(--gold);
       }
 
       /* =============================================
@@ -1517,6 +1643,11 @@
           font-size: 16px;
           padding: 11px 12px;
         }
+        .guest-stepper-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
         .attend-opt {
           padding: 10px 6px;
           font-size: 9px;
@@ -1554,6 +1685,12 @@
         }
         .saree-band {
           padding: 6px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .guest-pill-row {
+          display: flex;
         }
       }
 
@@ -1654,12 +1791,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #b8861a 0%, #e8c060 55%, #b8861a 100%);
-        box-shadow: 0 4px 18px rgba(184, 134, 26, 0.55), 0 0 0 0 rgba(184, 134, 26, 0.35);
+        background: linear-gradient(
+          135deg,
+          #b8861a 0%,
+          #e8c060 55%,
+          #b8861a 100%
+        );
+        box-shadow:
+          0 4px 18px rgba(184, 134, 26, 0.55),
+          0 0 0 0 rgba(184, 134, 26, 0.35);
         opacity: 0;
         transform: scale(0.7);
-        transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1),
-                    box-shadow 0.3s ease;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s ease;
         outline: none;
         -webkit-tap-highlight-color: transparent;
       }
@@ -1671,7 +1817,9 @@
         animation: music-pulse 2s ease-in-out infinite;
       }
       #music-btn:hover {
-        box-shadow: 0 6px 24px rgba(184, 134, 26, 0.75), 0 0 0 6px rgba(184, 134, 26, 0.15);
+        box-shadow:
+          0 6px 24px rgba(184, 134, 26, 0.75),
+          0 0 0 6px rgba(184, 134, 26, 0.15);
         transform: scale(1.08);
       }
       #music-btn:active {
@@ -1680,12 +1828,21 @@
       #music-btn i {
         font-size: 20px;
         color: #fff;
-        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
         transition: transform 0.2s ease;
       }
       @keyframes music-pulse {
-        0%, 100% { box-shadow: 0 4px 18px rgba(184,134,26,0.55), 0 0 0 0 rgba(184,134,26,0.35); }
-        50%       { box-shadow: 0 4px 18px rgba(184,134,26,0.7),  0 0 0 10px rgba(184,134,26,0); }
+        0%,
+        100% {
+          box-shadow:
+            0 4px 18px rgba(184, 134, 26, 0.55),
+            0 0 0 0 rgba(184, 134, 26, 0.35);
+        }
+        50% {
+          box-shadow:
+            0 4px 18px rgba(184, 134, 26, 0.7),
+            0 0 0 10px rgba(184, 134, 26, 0);
+        }
       }
 
       /* =============================================
@@ -1709,8 +1866,11 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         opacity: 0;
         transform: scale(0.7);
-        transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1),
-                    box-shadow 0.3s ease, background-color 0.3s;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s ease,
+          background-color 0.3s;
         outline: none;
         -webkit-tap-highlight-color: transparent;
       }
@@ -2077,12 +2237,20 @@
     <audio id="bg-music" src="tone.mp3" loop preload="auto"></audio>
 
     <!-- Floating Music Toggle Button -->
-    <button id="music-btn" aria-label="Toggle background music" title="Toggle music">
+    <button
+      id="music-btn"
+      aria-label="Toggle background music"
+      title="Toggle music"
+    >
       <i id="music-icon" class="fa-solid fa-music"></i>
     </button>
 
     <!-- Floating Close/Reset Button -->
-    <button id="close-btn" aria-label="Close invitation" title="Close and Reset">
+    <button
+      id="close-btn"
+      aria-label="Close invitation"
+      title="Close and Reset"
+    >
       <i class="fa-solid fa-xmark"></i>
     </button>
 
@@ -2568,13 +2736,52 @@
             </div>
             <div class="field" id="guest-field">
               <label for="rsvp-guests">Number of Guests (incl. yourself)</label>
-              <input
-                type="number"
-                id="rsvp-guests"
-                min="1"
-                max="10"
-                value="1"
-              />
+              <div class="guest-stepper" aria-label="Guest count selector">
+                <button
+                  type="button"
+                  class="guest-stepper-btn"
+                  data-action="decrease"
+                  aria-label="Decrease guest count"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  id="rsvp-guests"
+                  min="0"
+                  max="10"
+                  value="1"
+                  inputmode="numeric"
+                />
+                <button
+                  type="button"
+                  class="guest-stepper-btn"
+                  data-action="increase"
+                  aria-label="Increase guest count"
+                >
+                  +
+                </button>
+              </div>
+              <div class="guest-pill-row" id="guest-pill-row">
+                <button type="button" class="guest-pill" data-value="0">
+                  0
+                </button>
+                <button type="button" class="guest-pill" data-value="1">
+                  1
+                </button>
+                <button type="button" class="guest-pill" data-value="2">
+                  2
+                </button>
+                <button type="button" class="guest-pill" data-value="3">
+                  3
+                </button>
+                <button type="button" class="guest-pill" data-value="4">
+                  4
+                </button>
+                <button type="button" class="guest-pill" data-value="5">
+                  5
+                </button>
+              </div>
             </div>
             <div class="field">
               <label for="rsvp-note">Message (optional)</label>
@@ -2589,6 +2796,19 @@
             <div class="form-msg" id="rsvp-msg"></div>
           </form>
           <div class="rsvp-count" id="rsvp-count"></div>
+          <div class="contact-strip">
+            <div class="contact-title">Contact Us</div>
+            <div class="contact-row">
+              <div class="contact-item">
+                <span class="contact-label">Amanda</span>
+                <a href="tel:+94711311899">071 131 1899</a>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Priyankara</span>
+                <a href="tel:+94755969422">075 596 9422</a>
+              </div>
+            </div>
+          </div>
           <div class="privacy-note">
             RSVP counts are shared to help us plan seating &mdash; individual
             names are kept private.
@@ -2784,6 +3004,22 @@
         /* RSVP */
         var ag = document.getElementById("attend-group");
         var gf = document.getElementById("guest-field");
+        var guestInput = document.getElementById("rsvp-guests");
+        var guestPills = document.querySelectorAll(".guest-pill");
+
+        function syncGuestValue(nextValue) {
+          var parsed = parseInt(nextValue, 10);
+          if (isNaN(parsed)) parsed = 1;
+          parsed = Math.min(10, Math.max(0, parsed));
+          guestInput.value = parsed;
+          guestPills.forEach(function (pill) {
+            pill.classList.toggle(
+              "active",
+              parseInt(pill.dataset.value, 10) === parsed,
+            );
+          });
+        }
+
         ag.addEventListener("click", function (e) {
           var opt = e.target.closest(".attend-opt");
           if (!opt) return;
@@ -2793,6 +3029,28 @@
           opt.classList.add("active");
           opt.querySelector("input").checked = true;
           gf.style.display = opt.dataset.val === "no" ? "none" : "block";
+        });
+
+        document.querySelectorAll(".guest-stepper-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var current = parseInt(guestInput.value, 10) || 1;
+            var delta = btn.dataset.action === "increase" ? 1 : -1;
+            syncGuestValue(current + delta);
+          });
+        });
+
+        guestInput.addEventListener("input", function () {
+          syncGuestValue(this.value);
+        });
+
+        guestInput.addEventListener("blur", function () {
+          syncGuestValue(this.value);
+        });
+
+        guestPills.forEach(function (pill) {
+          pill.addEventListener("click", function () {
+            syncGuestValue(pill.dataset.value);
+          });
         });
 
         async function refreshCount() {
@@ -2942,32 +3200,37 @@
         loadWishes();
 
         /* ===== Interactive Envelope Opening Handler ===== */
-        var overlay   = document.getElementById("envelopeOverlay");
-        var wrapper   = document.getElementById("envelopeWrapper");
-        var seal      = document.getElementById("waxSeal");
-        var promptEl  = document.getElementById("envPrompt");
-        var isOpened  = false;
+        var overlay = document.getElementById("envelopeOverlay");
+        var wrapper = document.getElementById("envelopeWrapper");
+        var seal = document.getElementById("waxSeal");
+        var promptEl = document.getElementById("envPrompt");
+        var isOpened = false;
 
         /* --- Music & Control references --- */
-        var bgMusic       = document.getElementById("bg-music");
-        var musicBtn      = document.getElementById("music-btn");
-        var musicIcon     = document.getElementById("music-icon");
-        var closeBtn      = document.getElementById("close-btn");
-        var musicPlaying  = false;
+        var bgMusic = document.getElementById("bg-music");
+        var musicBtn = document.getElementById("music-btn");
+        var musicIcon = document.getElementById("music-icon");
+        var closeBtn = document.getElementById("close-btn");
+        var musicPlaying = false;
 
         function startMusic() {
           if (!bgMusic) return;
           bgMusic.volume = 0;
-          bgMusic.play().then(function () {
-            musicPlaying = true;
-            // Fade volume in smoothly over 2 s
-            var vol = 0;
-            var fadeIn = setInterval(function () {
-              vol = Math.min(vol + 0.02, 0.55);
-              bgMusic.volume = vol;
-              if (vol >= 0.55) clearInterval(fadeIn);
-            }, 60);
-          }).catch(function () { /* autoplay blocked — user can click the button */ });
+          bgMusic
+            .play()
+            .then(function () {
+              musicPlaying = true;
+              // Fade volume in smoothly over 2 s
+              var vol = 0;
+              var fadeIn = setInterval(function () {
+                vol = Math.min(vol + 0.02, 0.55);
+                bgMusic.volume = vol;
+                if (vol >= 0.55) clearInterval(fadeIn);
+              }, 60);
+            })
+            .catch(function () {
+              /* autoplay blocked — user can click the button */
+            });
         }
 
         function updateMusicUI() {
@@ -2988,7 +3251,7 @@
               bgMusic.pause();
               musicPlaying = false;
             } else {
-              bgMusic.play().catch(function(){});
+              bgMusic.play().catch(function () {});
               musicPlaying = true;
             }
             updateMusicUI();
@@ -3177,12 +3440,25 @@
             this.swayTime = Math.random() * 100;
             this.opacity = Math.random() * 0.25 + 0.4;
             const palettes = [
-              { fill: 'rgba(212, 160, 48, ',  stroke: 'rgba(140, 90, 10, 0.65)' },  // gold
-              { fill: 'rgba(240, 200, 80, ',  stroke: 'rgba(180, 130, 20, 0.65)' }, // bright gold
-              { fill: 'rgba(230, 120, 145, ', stroke: 'rgba(170, 60, 85, 0.6)'  },  // rose pink
-              { fill: 'rgba(195, 140, 210, ', stroke: 'rgba(130, 75, 145, 0.6)'  }, // lavender
+              {
+                fill: "rgba(212, 160, 48, ",
+                stroke: "rgba(140, 90, 10, 0.65)",
+              }, // gold
+              {
+                fill: "rgba(240, 200, 80, ",
+                stroke: "rgba(180, 130, 20, 0.65)",
+              }, // bright gold
+              {
+                fill: "rgba(230, 120, 145, ",
+                stroke: "rgba(170, 60, 85, 0.6)",
+              }, // rose pink
+              {
+                fill: "rgba(195, 140, 210, ",
+                stroke: "rgba(130, 75, 145, 0.6)",
+              }, // lavender
             ];
-            this.palette = palettes[Math.floor(Math.random() * palettes.length)];
+            this.palette =
+              palettes[Math.floor(Math.random() * palettes.length)];
           }
           update() {
             this.swayTime += this.swaySpeed;
@@ -3205,8 +3481,8 @@
             // wingScale: 1 = fully open (wide), 0.15 = nearly closed
             const wingScale = Math.max(0.15, Math.abs(Math.sin(this.wingTime)));
 
-            const fillColor      = this.palette.fill + this.opacity + ')';
-            const fillColorLight = this.palette.fill + (this.opacity * 0.6) + ')';
+            const fillColor = this.palette.fill + this.opacity + ")";
+            const fillColorLight = this.palette.fill + this.opacity * 0.6 + ")";
             ctx.lineWidth = 0.5;
 
             // ── Upper wings (spread left and right) ──
@@ -3219,9 +3495,17 @@
             ctx.scale(wingScale, 1);
             ctx.beginPath();
             ctx.moveTo(0, -s * 0.1);
-            ctx.bezierCurveTo( s * 0.4, -s * 0.6,  s * 1.6, -s * 1.1,  s * 1.3, -s * 0.15);
-            ctx.bezierCurveTo( s * 0.9,  s * 0.25,  s * 0.2,  s * 0.1,  0, -s * 0.1);
-            ctx.fill(); ctx.stroke();
+            ctx.bezierCurveTo(
+              s * 0.4,
+              -s * 0.6,
+              s * 1.6,
+              -s * 1.1,
+              s * 1.3,
+              -s * 0.15,
+            );
+            ctx.bezierCurveTo(s * 0.9, s * 0.25, s * 0.2, s * 0.1, 0, -s * 0.1);
+            ctx.fill();
+            ctx.stroke();
             ctx.restore();
 
             // LEFT upper wing (mirror)
@@ -3229,9 +3513,17 @@
             ctx.scale(-wingScale, 1);
             ctx.beginPath();
             ctx.moveTo(0, -s * 0.1);
-            ctx.bezierCurveTo( s * 0.4, -s * 0.6,  s * 1.6, -s * 1.1,  s * 1.3, -s * 0.15);
-            ctx.bezierCurveTo( s * 0.9,  s * 0.25,  s * 0.2,  s * 0.1,  0, -s * 0.1);
-            ctx.fill(); ctx.stroke();
+            ctx.bezierCurveTo(
+              s * 0.4,
+              -s * 0.6,
+              s * 1.6,
+              -s * 1.1,
+              s * 1.3,
+              -s * 0.15,
+            );
+            ctx.bezierCurveTo(s * 0.9, s * 0.25, s * 0.2, s * 0.1, 0, -s * 0.1);
+            ctx.fill();
+            ctx.stroke();
             ctx.restore();
 
             // ── Lower wings (smaller, rounder) ──
@@ -3242,9 +3534,17 @@
             ctx.scale(wingScale, 1);
             ctx.beginPath();
             ctx.moveTo(0, s * 0.1);
-            ctx.bezierCurveTo( s * 0.5,  s * 0.3,  s * 1.1,  s * 0.9,  s * 0.55,  s * 0.85);
-            ctx.bezierCurveTo( s * 0.2,  s * 0.6,  s * 0.05, s * 0.3,  0,  s * 0.1);
-            ctx.fill(); ctx.stroke();
+            ctx.bezierCurveTo(
+              s * 0.5,
+              s * 0.3,
+              s * 1.1,
+              s * 0.9,
+              s * 0.55,
+              s * 0.85,
+            );
+            ctx.bezierCurveTo(s * 0.2, s * 0.6, s * 0.05, s * 0.3, 0, s * 0.1);
+            ctx.fill();
+            ctx.stroke();
             ctx.restore();
 
             // LEFT lower wing (mirror)
@@ -3252,13 +3552,21 @@
             ctx.scale(-wingScale, 1);
             ctx.beginPath();
             ctx.moveTo(0, s * 0.1);
-            ctx.bezierCurveTo( s * 0.5,  s * 0.3,  s * 1.1,  s * 0.9,  s * 0.55,  s * 0.85);
-            ctx.bezierCurveTo( s * 0.2,  s * 0.6,  s * 0.05, s * 0.3,  0,  s * 0.1);
-            ctx.fill(); ctx.stroke();
+            ctx.bezierCurveTo(
+              s * 0.5,
+              s * 0.3,
+              s * 1.1,
+              s * 0.9,
+              s * 0.55,
+              s * 0.85,
+            );
+            ctx.bezierCurveTo(s * 0.2, s * 0.6, s * 0.05, s * 0.3, 0, s * 0.1);
+            ctx.fill();
+            ctx.stroke();
             ctx.restore();
 
             // ── Body ──
-            ctx.fillStyle = 'rgba(55, 30, 5, 0.9)';
+            ctx.fillStyle = "rgba(55, 30, 5, 0.9)";
             ctx.beginPath();
             ctx.ellipse(0, 0, s * 0.1, s * 0.65, 0, 0, Math.PI * 2);
             ctx.fill();
@@ -3269,20 +3577,20 @@
             ctx.fill();
 
             // ── Antennae ──
-            ctx.strokeStyle = 'rgba(55, 30, 5, 0.8)';
+            ctx.strokeStyle = "rgba(55, 30, 5, 0.8)";
             ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(-s * 0.05, -s * 0.72);
             ctx.quadraticCurveTo(-s * 0.5, -s * 1.3, -s * 0.55, -s * 1.6);
-            ctx.moveTo( s * 0.05, -s * 0.72);
-            ctx.quadraticCurveTo( s * 0.5, -s * 1.3,  s * 0.55, -s * 1.6);
+            ctx.moveTo(s * 0.05, -s * 0.72);
+            ctx.quadraticCurveTo(s * 0.5, -s * 1.3, s * 0.55, -s * 1.6);
             ctx.stroke();
 
             // Antenna tips
-            ctx.fillStyle = 'rgba(55, 30, 5, 0.9)';
+            ctx.fillStyle = "rgba(55, 30, 5, 0.9)";
             ctx.beginPath();
             ctx.arc(-s * 0.55, -s * 1.6, s * 0.09, 0, Math.PI * 2);
-            ctx.arc( s * 0.55, -s * 1.6, s * 0.09, 0, Math.PI * 2);
+            ctx.arc(s * 0.55, -s * 1.6, s * 0.09, 0, Math.PI * 2);
             ctx.fill();
 
             ctx.restore();
@@ -3327,13 +3635,33 @@
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
-            grad.addColorStop(0, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`);
-            grad.addColorStop(1, `rgba(${this.color.r - 20}, ${this.color.g - 30}, ${this.color.b - 30}, ${this.opacity - 0.1})`);
+            grad.addColorStop(
+              0,
+              `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`,
+            );
+            grad.addColorStop(
+              1,
+              `rgba(${this.color.r - 20}, ${this.color.g - 30}, ${this.color.b - 30}, ${this.opacity - 0.1})`,
+            );
             ctx.fillStyle = grad;
             ctx.beginPath();
             ctx.moveTo(0, -this.size / 2);
-            ctx.bezierCurveTo(this.size, -this.size, this.size * 1.5, this.size / 2, 0, this.size);
-            ctx.bezierCurveTo(-this.size * 1.5, this.size / 2, -this.size, -this.size, 0, -this.size / 2);
+            ctx.bezierCurveTo(
+              this.size,
+              -this.size,
+              this.size * 1.5,
+              this.size / 2,
+              0,
+              this.size,
+            );
+            ctx.bezierCurveTo(
+              -this.size * 1.5,
+              this.size / 2,
+              -this.size,
+              -this.size,
+              0,
+              -this.size / 2,
+            );
             ctx.fill();
             ctx.strokeStyle = `rgba(${this.color.r - 10}, ${this.color.g - 20}, ${this.color.b - 20}, ${this.opacity * 0.4})`;
             ctx.lineWidth = 0.5;
@@ -3385,8 +3713,22 @@
             ctx.fillStyle = this.colorPrefix + this.opacity + ")";
             ctx.beginPath();
             ctx.moveTo(0, this.size * 0.3);
-            ctx.bezierCurveTo(-this.size * 0.5, -this.size * 0.5, -this.size * 1.2, this.size * 0.2, 0, this.size * 1.2);
-            ctx.bezierCurveTo(this.size * 1.2, this.size * 0.2, this.size * 0.5, -this.size * 0.5, 0, this.size * 0.3);
+            ctx.bezierCurveTo(
+              -this.size * 0.5,
+              -this.size * 0.5,
+              -this.size * 1.2,
+              this.size * 0.2,
+              0,
+              this.size * 1.2,
+            );
+            ctx.bezierCurveTo(
+              this.size * 1.2,
+              this.size * 0.2,
+              this.size * 0.5,
+              -this.size * 0.5,
+              0,
+              this.size * 0.3,
+            );
             ctx.fill();
             ctx.restore();
           }
@@ -3402,9 +3744,18 @@
           ctx.save();
           applyClip();
 
-          hearts.forEach((h) => { h.update(); h.draw(); });
-          petals.forEach((p) => { p.update(); p.draw(); });
-          butterflies.forEach((b) => { b.update(); b.draw(); });
+          hearts.forEach((h) => {
+            h.update();
+            h.draw();
+          });
+          petals.forEach((p) => {
+            p.update();
+            p.draw();
+          });
+          butterflies.forEach((b) => {
+            b.update();
+            b.draw();
+          });
 
           ctx.restore();
 
