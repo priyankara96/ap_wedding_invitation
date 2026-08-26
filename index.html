@@ -367,7 +367,7 @@
       }
       .hero-names {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(48px, 13vw, 100px);
+        font-size: clamp(48px, 13vw, 75px);
         font-weight: 500;
         color: #fff;
         line-height: 1;
@@ -604,6 +604,16 @@
         color: var(--ink);
         line-height: 1.6;
         font-weight: 500;
+      }
+      @media (max-width: 1920px) {
+        .hero-names {
+          font-size: clamp(48px, 13vw, 100px);
+        }
+      }
+      @media (max-width: 1480px) {
+        .hero-names {
+          font-size: clamp(48px, 13vw, 75px);
+        }
       }
       @media (max-width: 480px) {
         .parents-grid {
