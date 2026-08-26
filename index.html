@@ -621,6 +621,9 @@
           border-bottom: none;
           padding-bottom: 0;
         }
+        .rel-label-mobile {
+          margin-top: 15px;
+        }
       }
 
       .couple-display {
@@ -1285,7 +1288,7 @@
    ============================================= */
       .wish-form-box {
         max-width: 520px;
-        margin: 0 auto 40px;
+        margin: 0 auto 36px;
         background: var(--white);
         border: 1px solid var(--line);
         border-radius: var(--r-lg);
@@ -1294,52 +1297,199 @@
         position: relative;
         z-index: 99999;
       }
-      .wish-wall {
+      .wish-wall-header {
         max-width: 640px;
+        margin: 0 auto 24px;
+        text-align: center;
+        position: relative;
+        z-index: 99999;
+      }
+      .wish-wall-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+      .wish-wall-divider .divider-line {
+        height: 1px;
+        flex: 1;
+        max-width: 110px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold-border),
+          transparent
+        );
+      }
+      .wish-wall-divider .divider-icon {
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+      }
+      .wish-wall-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(184, 134, 26, 0.08);
+        border: 1px solid rgba(184, 134, 26, 0.24);
+        padding: 6px 18px;
+        border-radius: 24px;
+        font-size: 11.5px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--ink-mid);
+        margin-bottom: 6px;
+      }
+      .wish-live-dot {
+        width: 7px;
+        height: 7px;
+        background: #28a745;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+        display: inline-block;
+      }
+      .wish-wall-sub {
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-top: 4px;
+      }
+      .wish-wall {
+        max-width: 780px;
         margin: 0 auto;
         display: grid;
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
         position: relative;
         z-index: 99999;
       }
       .wish-card {
-        background: var(--white);
-        border: 1px solid var(--line);
+        background: #fffdfa;
+        border: 1px solid var(--gold-border);
         border-radius: var(--r-md);
-        padding: 20px 24px;
+        padding: 20px 22px;
+        box-shadow: 0 4px 18px -4px rgba(184, 134, 26, 0.09);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .wish-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px -4px rgba(184, 134, 26, 0.15);
+      }
+      .wish-card-quote-bg {
+        position: absolute;
+        top: 6px;
+        right: 14px;
+        font-family: serif;
+        font-size: 56px;
+        line-height: 1;
+        color: rgba(184, 134, 26, 0.08);
+        pointer-events: none;
+        user-select: none;
       }
       .wish-top {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
         gap: 10px;
-        margin-bottom: 7px;
+        margin-bottom: 10px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .wish-author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .wish-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-pale), #ebd096);
+        border: 1px solid var(--gold-border);
+        color: var(--ink-mid);
+        font-family: "Cinzel", serif;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        flex-shrink: 0;
       }
       .wish-name {
         font-family: "Cinzel", serif;
-        font-size: 10px;
-        letter-spacing: 0.1em;
+        font-size: 11px;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: var(--gold);
-        font-weight: 600;
+        color: #7b5b1e;
+        font-weight: 700;
       }
       .wish-date {
-        font-size: 11.5px;
+        font-size: 11px;
         color: var(--ink-soft);
+        background: rgba(184, 134, 26, 0.06);
+        padding: 3px 9px;
+        border-radius: 12px;
       }
       .wish-text {
         font-family: "Cormorant Garamond", serif;
-        font-size: 17px;
+        font-size: 17.5px;
         color: var(--ink);
-        line-height: 1.65;
+        line-height: 1.6;
+        white-space: pre-line;
+        word-break: break-word;
+        position: relative;
+        z-index: 1;
+        flex-grow: 1;
       }
-      .wish-empty {
+      .wish-empty-box {
+        grid-column: 1 / -1;
         text-align: center;
+        padding: clamp(32px, 6vw, 44px) clamp(16px, 4vw, 28px);
+        background: linear-gradient(
+          180deg,
+          #fffdf8 0%,
+          rgba(253, 250, 243, 0.85) 100%
+        );
+        border: 1px dashed var(--gold-border);
+        border-radius: var(--r-md);
+        box-shadow: 0 4px 20px -6px rgba(184, 134, 26, 0.07);
+      }
+      .wish-empty-icon {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        background: var(--gold-pale);
+        border: 1px solid var(--gold-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-size: 20px;
+      }
+      .wish-empty-title {
         font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: 17px;
-        color: var(--ink-soft);
+        font-size: 22px;
+        font-weight: 700;
+        color: #7b5b1e;
+        margin-bottom: 6px;
+      }
+      .wish-empty-sub {
+        font-size: 13.5px;
+        color: var(--ink-mid);
+        line-height: 1.6;
+        max-width: 420px;
+        margin: 0 auto;
       }
 
       /* =============================================
@@ -1665,11 +1815,15 @@
         .wish-form-box {
           padding: 22px 14px;
         }
+        .wish-wall {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
         .wish-card {
-          padding: 14px 16px;
+          padding: 16px 16px;
         }
         .wish-name {
-          font-size: 9px;
+          font-size: 10px;
         }
         .wish-text {
           font-size: 16px;
@@ -2502,7 +2656,7 @@
             </div>
             <div class="div-rule"></div>
             <div class="side">
-              <div class="rel-label">Son of</div>
+              <div class="rel-label rel-label-mobile">Son of</div>
               <div class="pnames">
                 Mr. A. H. M. Keerthi &amp;<br />Mrs. R. M. A. Rathnayaka
               </div>
@@ -2796,7 +2950,6 @@
             </button>
             <div class="form-msg" id="rsvp-msg"></div>
           </form>
-          <div class="rsvp-count" id="rsvp-count"></div>
           <div class="contact-strip">
             <div class="contact-title">Contact Us</div>
             <div class="contact-row">
@@ -2811,8 +2964,7 @@
             </div>
           </div>
           <div class="privacy-note">
-            RSVP counts are shared to help us plan seating &mdash; individual
-            names are kept private.
+            Your RSVP details are sent directly to the couple and kept private.
           </div>
         </div>
       </div>
@@ -2871,19 +3023,50 @@
             <div class="form-msg" id="wish-msg"></div>
           </form>
         </div>
-        <p
-          style="
-            text-align: center;
-            font-size: 11px;
-            color: var(--ink-soft);
-            margin-bottom: 26px;
-          "
-        >
-          Wishes are visible to all guests on this page.
-        </p>
+        <div class="wish-wall-header reveal">
+          <div class="wish-wall-divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  fill="var(--gold-pale)"
+                  stroke="var(--gold)"
+                />
+              </svg>
+            </span>
+            <span class="divider-line"></span>
+          </div>
+          <div class="wish-wall-pill">
+            <i
+              class="fa-regular fa-comments"
+              style="color: var(--gold); font-size: 11px"
+            ></i>
+            <span>Guestbook Messages</span>
+            <span class="wish-live-dot" title="Live updates"></span>
+          </div>
+          <p class="wish-wall-sub">
+            Warm blessings and wishes shared by family &amp; friends
+          </p>
+        </div>
         <div class="wish-wall" id="wish-wall">
-          <div class="wish-empty">
-            Be the first to leave a blessing for the couple.
+          <div class="wish-empty-box">
+            <div class="wish-empty-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="wish-empty-title">Awaiting the First Blessing</div>
+            <p class="wish-empty-sub">
+              No wishes have been shared yet.<br />
+              Be the first to pen a loving blessing for Amanda &amp; Priyankara
+              above!
+            </p>
           </div>
         </div>
       </div>
@@ -3054,66 +3237,167 @@
           });
         });
 
-        async function refreshCount() {
-          try {
-            var list = await window.storage.list("rsvp:", true);
-            if (!list || !list.keys) return;
-            var total = 0,
-              yes = 0;
-            for (var i = 0; i < list.keys.length; i++) {
-              try {
-                var r = await window.storage.get(list.keys[i], true);
-                if (r && r.value) {
-                  var d = JSON.parse(r.value);
-                  total++;
-                  if (d.attend === "yes") yes += parseInt(d.guests, 10) || 1;
+        /* JotForm Submission Helper (Submits strictly once via background frame) */
+        function submitToJotform(actionUrl, fields) {
+          return new Promise(function (resolve) {
+            try {
+              var iframeName = "jf_sub_" + Date.now();
+              var iframe = document.createElement("iframe");
+              iframe.name = iframeName;
+              iframe.style.display = "none";
+              document.body.appendChild(iframe);
+
+              var form = document.createElement("form");
+              form.target = iframeName;
+              form.action = actionUrl;
+              form.method = "POST";
+              form.style.display = "none";
+
+              for (var key in fields) {
+                if (Object.prototype.hasOwnProperty.call(fields, key)) {
+                  var input = document.createElement("input");
+                  input.type = "hidden";
+                  input.name = key;
+                  input.value = fields[key];
+                  form.appendChild(input);
                 }
+              }
+
+              document.body.appendChild(form);
+
+              var finished = false;
+              function done() {
+                if (finished) return;
+                finished = true;
+                setTimeout(function () {
+                  if (form.parentNode) form.parentNode.removeChild(form);
+                  if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                }, 1000);
+                resolve(true);
+              }
+
+              iframe.onload = done;
+              form.submit();
+              setTimeout(done, 1200);
+            } catch (err) {
+              resolve(false);
+            }
+          });
+        }
+
+        /* Clear legacy test storage from previous testing session */
+        try {
+          if (!localStorage.getItem("wedding_clean_v1")) {
+            for (var i = localStorage.length - 1; i >= 0; i--) {
+              var k = localStorage.key(i);
+              if (k && (k.indexOf("wish:") === 0 || k.indexOf("rsvp:") === 0)) {
+                localStorage.removeItem(k);
+              }
+            }
+            localStorage.setItem("wedding_clean_v1", "true");
+          }
+        } catch (e) {}
+
+        /* Safe Storage Helper for Wishes (window.storage or localStorage) */
+        var appStorage = {
+          async list(prefix) {
+            if (window.storage && typeof window.storage.list === "function") {
+              try {
+                return await window.storage.list(prefix, true);
               } catch (e) {}
             }
-            document.getElementById("rsvp-count").innerHTML =
-              "<strong>" +
-              yes +
-              "</strong> guest(s) confirmed so far, from " +
-              total +
-              " response(s).";
-          } catch (e) {
-            document.getElementById("rsvp-count").textContent = "";
-          }
-        }
+            try {
+              var keys = [];
+              for (var i = 0; i < localStorage.length; i++) {
+                var k = localStorage.key(i);
+                if (k && k.indexOf(prefix) === 0) keys.push(k);
+              }
+              return { keys: keys };
+            } catch (e) {
+              return { keys: [] };
+            }
+          },
+          async get(key) {
+            if (window.storage && typeof window.storage.get === "function") {
+              try {
+                return await window.storage.get(key, true);
+              } catch (e) {}
+            }
+            try {
+              var val = localStorage.getItem(key);
+              return val ? { value: val } : null;
+            } catch (e) {
+              return null;
+            }
+          },
+          async set(key, value) {
+            if (window.storage && typeof window.storage.set === "function") {
+              try {
+                return await window.storage.set(key, value, true);
+              } catch (e) {}
+            }
+            try {
+              localStorage.setItem(key, value);
+            } catch (e) {}
+          },
+        };
 
         document
           .getElementById("rsvp-form")
           .addEventListener("submit", async function (e) {
             e.preventDefault();
             var btn = document.getElementById("rsvp-submit");
+            var originalText = btn.textContent;
             btn.disabled = true;
+            btn.textContent = "Sending RSVP...";
+
             var name = document.getElementById("rsvp-name").value.trim();
-            var attend = this.querySelector("input[name=attend]:checked").value;
+            var attendEl = this.querySelector("input[name=attend]:checked");
+            var attendVal = attendEl ? attendEl.value : "yes";
+            var isYes = attendVal === "yes";
             var guests = document.getElementById("rsvp-guests").value || 1;
             var note = document.getElementById("rsvp-note").value.trim();
-            var key =
-              "rsvp:" +
-              Date.now() +
-              "-" +
-              Math.random().toString(36).slice(2, 8);
+
+            var jotformRSVPData = {
+              formID: "262373390050451",
+              simple_spc: "262373390050451-262373390050451",
+              q33_typeA: name,
+              q35_typeA35: isYes ? "Joyfully Yes" : "Regretfully No",
+              q36_typeA36: isYes
+                ? "Attending: Yes | Guests: " +
+                  guests +
+                  (note ? " Message: " + note : "")
+                : "Attending: No" + (note ? " Message: " + note : ""),
+            };
+
             try {
-              await window.storage.set(
-                key,
-                JSON.stringify({ name, attend, guests, note, ts: Date.now() }),
-                true,
+              await submitToJotform(
+                "https://submit.jotform.com/submit/262373390050451",
+                jotformRSVPData,
               );
-              document.getElementById("rsvp-msg").textContent =
-                "Thank you, " + name + " \u2014 your RSVP has been received.";
-              this.reset();
-              ag.querySelector('[data-val="yes"]').click();
-              refreshCount();
+
+              var msgEl = document.getElementById("rsvp-msg");
+              msgEl.style.color = "#7b5b1e";
+              msgEl.innerHTML =
+                '<div style="font-family: \'Cormorant Garamond\', serif; font-size: 20px; font-weight: 700; color: var(--gold-dark); margin-bottom: 2px; font-style: normal;">Thank You!</div><div style="font-size: 13px; color: var(--ink-mid); font-style: normal;">Your submission has been received.</div>';
+
+              // Clear form data
+              document.getElementById("rsvp-name").value = "";
+              document.getElementById("rsvp-note").value = "";
+              document.getElementById("rsvp-guests").value = "1";
+              if (typeof syncGuestValue === "function") syncGuestValue(1);
+              if (ag.querySelector('[data-val="yes"]')) {
+                ag.querySelector('[data-val="yes"]').click();
+              }
             } catch (err) {
-              document.getElementById("rsvp-msg").textContent =
-                "Something went wrong \u2014 please try again.";
+              var msgElErr = document.getElementById("rsvp-msg");
+              msgElErr.style.color = "#a33";
+              msgElErr.textContent = "Something went wrong — please try again.";
+            } finally {
+              btn.disabled = false;
+              btn.textContent = originalText;
             }
-            btn.disabled = false;
           });
-        refreshCount();
 
         /* Wishes */
         function esc(s) {
@@ -3135,39 +3419,65 @@
 
         async function loadWishes() {
           var wall = document.getElementById("wish-wall");
+          if (!wall) return;
+          var emptyHtml =
+            '<div class="wish-empty-box">' +
+            '<div class="wish-empty-icon"><i class="fa-solid fa-heart"></i></div>' +
+            '<div class="wish-empty-title">Awaiting the First Blessing</div>' +
+            '<p class="wish-empty-sub">No wishes have been shared yet.<br/>Be the first to pen a loving blessing for Amanda &amp; Priyankara above!</p>' +
+            "</div>";
           try {
-            var list = await window.storage.list("wish:", true);
+            var list = await appStorage.list("wish:");
             if (!list || !list.keys || !list.keys.length) {
-              wall.innerHTML =
-                '<div class="wish-empty">Be the first to leave a blessing for the couple.</div>';
+              wall.innerHTML = emptyHtml;
               return;
             }
             var items = [];
             for (var i = 0; i < list.keys.length; i++) {
               try {
-                var r = await window.storage.get(list.keys[i], true);
+                var r = await appStorage.get(list.keys[i]);
                 if (r && r.value) items.push(JSON.parse(r.value));
               } catch (e) {}
+            }
+            if (!items.length) {
+              wall.innerHTML = emptyHtml;
+              return;
             }
             items.sort(function (a, b) {
               return (b.ts || 0) - (a.ts || 0);
             });
-            wall.innerHTML = items
+            var recentWishes = items.slice(0, 4);
+            wall.innerHTML = recentWishes
               .map(function (it) {
+                var initial = (it.name || "G").trim().charAt(0).toUpperCase();
+                var formattedText = esc(it.text || "")
+                  .replace(/\r\n/g, "<br/>")
+                  .replace(/[\r\n]/g, "<br/>");
                 return (
-                  '<div class="wish-card"><div class="wish-top"><span class="wish-name">' +
+                  '<div class="wish-card">' +
+                  '<div class="wish-card-quote-bg">&ldquo;</div>' +
+                  '<div class="wish-top">' +
+                  '<div class="wish-author">' +
+                  '<div class="wish-avatar">' +
+                  esc(initial) +
+                  "</div>" +
+                  '<span class="wish-name">' +
                   esc(it.name) +
-                  '</span><span class="wish-date">' +
+                  "</span>" +
+                  "</div>" +
+                  '<span class="wish-date">' +
                   fmt(it.ts) +
-                  '</span></div><div class="wish-text">' +
-                  esc(it.text) +
-                  "</div></div>"
+                  "</span>" +
+                  "</div>" +
+                  '<div class="wish-text">&ldquo;' +
+                  formattedText +
+                  "&rdquo;</div>" +
+                  "</div>"
                 );
               })
               .join("");
           } catch (e) {
-            wall.innerHTML =
-              '<div class="wish-empty">Wishes could not be loaded right now.</div>';
+            wall.innerHTML = emptyHtml;
           }
         }
 
@@ -3175,27 +3485,64 @@
           .getElementById("wish-form")
           .addEventListener("submit", async function (e) {
             e.preventDefault();
+            var btn = this.querySelector('button[type="submit"]');
+            var originalText = btn ? btn.textContent : "Send Wishes";
+            if (btn) {
+              btn.disabled = true;
+              btn.textContent = "Sending Wishes...";
+            }
+
             var name = document.getElementById("wish-name").value.trim();
             var text = document.getElementById("wish-text").value.trim();
-            if (!name || !text) return;
-            var key =
-              "wish:" +
-              Date.now() +
-              "-" +
-              Math.random().toString(36).slice(2, 8);
+            if (!name || !text) {
+              if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+              }
+              return;
+            }
+
+            var jotformWishData = {
+              formID: "262372577565468",
+              simple_spc: "262372577565468-262372577565468",
+              q31_typeA: name,
+              q33_typeA33: text,
+            };
+
             try {
-              await window.storage.set(
-                key,
-                JSON.stringify({ name, text, ts: Date.now() }),
-                true,
+              await submitToJotform(
+                "https://submit.jotform.com/submit/262372577565468",
+                jotformWishData,
               );
-              document.getElementById("wish-msg").textContent =
-                "Thank you for your kind wishes!";
-              this.reset();
+
+              var key =
+                "wish:" +
+                Date.now() +
+                "-" +
+                Math.random().toString(36).slice(2, 8);
+              await appStorage.set(
+                key,
+                JSON.stringify({ name: name, text: text, ts: Date.now() }),
+              );
+
+              var msgEl = document.getElementById("wish-msg");
+              msgEl.style.color = "#7b5b1e";
+              msgEl.innerHTML =
+                '<div style="font-family: \'Cormorant Garamond\', serif; font-size: 20px; font-weight: 700; color: var(--gold-dark); margin-bottom: 2px; font-style: normal;">Thank You!</div><div style="font-size: 13px; color: var(--ink-mid); font-style: normal;">Your submission has been received.</div>';
+
+              // Clear form data
+              document.getElementById("wish-name").value = "";
+              document.getElementById("wish-text").value = "";
               loadWishes();
             } catch (err) {
-              document.getElementById("wish-msg").textContent =
-                "Something went wrong \u2014 please try again.";
+              var msgElErr = document.getElementById("wish-msg");
+              msgElErr.style.color = "#a33";
+              msgElErr.textContent = "Something went wrong — please try again.";
+            } finally {
+              if (btn) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+              }
             }
           });
         loadWishes();
