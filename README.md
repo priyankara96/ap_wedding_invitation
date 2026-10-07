@@ -1,3 +1,3 @@
-# Amanda & Priyankara wedding invitation
+# pa_wedding_invitation
 
-- https://ap-wedding-invitation.vercel.app/
+- https://priyankara-amanda-homecoming-invitation.vercel.app/

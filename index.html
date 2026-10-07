@@ -11,6 +11,25 @@
       name="description"
       content="You are cordially invited to the Wedding Ceremony of Amanda and Priyankara on 25th November 2026 at Chance Palace, Veyangoda, Sri Lanka."
     />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Priyankara &amp; Amanda — Wedding Invitation"
+    />
+    <meta
+      property="og:description"
+      content="You are cordially invited to Wedding Ceremony of Amanda and Priyankara on 25th November 2026 at Chance Palace, Veyangoda, Sri Lanka.."
+    />
+    <meta
+      property="og:image"
+      content="https://amanda-priyankara-wedding-invitation.vercel.app/meta_image.webp"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:image"
+      content="https://amanda-priyankara-wedding-invitation.vercel.app/meta_image.webp"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,9 +45,9 @@
    DESIGN TOKENS — Gold & White Saree Aesthetic
    ============================================= */
       :root {
-        --gold: #b8861a;
+        --gold: #9e6c00;
         --gold-bright: #d4a030;
-        --gold-light: #e8c060;
+        --gold-light: #f7e3b5;
         --gold-pale: #f7e9c0;
         --gold-border: rgba(184, 134, 26, 0.35);
         --gold-faint: rgba(184, 134, 26, 0.12);
@@ -206,6 +225,7 @@
    ============================================= */
       .hero {
         position: relative;
+        z-index: 1;
         height: 100vh;
         min-height: 100vh;
         display: flex;
@@ -220,11 +240,9 @@
         position: absolute;
         top: 50%;
         left: 50%;
+        width: 100%;
+        height: 100%;
         transform: translate(-50%, -50%);
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
         object-fit: cover;
         z-index: 0;
         pointer-events: none;
@@ -365,13 +383,21 @@
         color: var(--gold-light);
         margin-bottom: 10px;
       }
+      .hero-eyebrow-sub {
+        font-family: "Cinzel", serif;
+        font-size: clamp(5px, 2vw, 9px);
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 10px;
+      }
       .hero-names {
         font-family: "Cormorant Garamond", serif;
         font-size: clamp(48px, 13vw, 75px);
         font-weight: 500;
         color: #fff;
         line-height: 1;
-        text-shadow: 0 2px 20px rgba(22, 13, 3, 0.55);
+        text-shadow: 0 2px 20px rgba(34, 6, 15, 0.55);
       }
       .hero-amp {
         display: block;
@@ -405,7 +431,7 @@
       }
       .scroll-cue {
         position: absolute;
-        bottom: 28px;
+        bottom: 60px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 4;
@@ -416,16 +442,56 @@
       }
       .scroll-cue span {
         font-family: "Cinzel", serif;
-        font-size: 8px;
+        font-size: 10px;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.38);
+        color: rgba(255, 255, 255, 0.694);
+      }
+      .scroll-track {
+        position: relative;
+        width: 24px;
+        height: 42px;
       }
       .scroll-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
         width: 1px;
-        height: 38px;
+        height: 100%;
         background: linear-gradient(var(--gold-light), transparent);
         animation: sc 2.5s ease-in-out infinite;
+      }
+      .scroll-art {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 20px;
+        height: 24px;
+        margin-left: -10px;
+        overflow: visible;
+        filter: drop-shadow(0 0 4px rgba(223, 154, 161, 0.55));
+        animation: scrollArt 2.2s ease-in-out infinite;
+      }
+      .scroll-art path {
+        fill: rgba(34, 6, 15, 0.72);
+        stroke: var(--gold-light);
+        stroke-width: 0.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      @keyframes scrollArt {
+        0% {
+          opacity: 0;
+          transform: translateY(0);
+        }
+        18%,
+        62% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
       }
       @keyframes sc {
         0%,
@@ -459,7 +525,7 @@
       }
       .section-title {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(28px, 6vw, 48px);
+        font-size: clamp(28px, 5vw, 30px);
         font-weight: 500;
         color: var(--ink);
         line-height: 1.1;
@@ -471,12 +537,118 @@
         margin: 12px auto 0;
         line-height: 1.85;
       }
+      .schedule-list {
+        display: grid;
+        gap: 16px;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .schedule-card {
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr);
+        align-items: center;
+        gap: clamp(16px, 4vw, 24px);
+        min-height: 112px;
+        padding: 18px clamp(16px, 4vw, 24px);
+        border: 1px solid rgba(158, 108, 0, 0.65);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .schedule-clock {
+        position: relative;
+        width: 68px;
+        aspect-ratio: 1;
+        border: 1px solid rgba(158, 108, 0, 0.32);
+        border-radius: 50%;
+        background:
+          linear-gradient(
+            90deg,
+            transparent calc(50% - 0.5px),
+            rgba(158, 108, 0, 0.2) calc(50% - 0.5px),
+            rgba(158, 108, 0, 0.2) calc(50% + 0.5px),
+            transparent calc(50% + 0.5px)
+          ),
+          linear-gradient(
+            0deg,
+            transparent calc(50% - 0.5px),
+            rgba(158, 108, 0, 0.2) calc(50% - 0.5px),
+            rgba(158, 108, 0, 0.2) calc(50% + 0.5px),
+            transparent calc(50% + 0.5px)
+          ),
+          rgba(212, 160, 48, 0.08);
+      }
+      .schedule-clock::before,
+      .schedule-clock::after {
+        content: "";
+        position: absolute;
+        left: calc(50% - 1px);
+        bottom: 50%;
+        width: 2px;
+        border-radius: 2px;
+        background: #b8861a;
+        transform-origin: 50% 100%;
+      }
+      .schedule-clock::before {
+        height: 21px;
+        transform: rotate(var(--minute-angle));
+      }
+      .schedule-clock::after {
+        height: 15px;
+        transform: rotate(var(--hour-angle));
+      }
+      .schedule-clock-dot {
+        position: absolute;
+        top: calc(50% - 3px);
+        left: calc(50% - 3px);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b8861a;
+      }
+      .schedule-time {
+        margin-bottom: 2px;
+        color: #826232;
+        font-family: "Cinzel", serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        line-height: 1.5;
+      }
+      .schedule-event {
+        color: #302536;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 5vw, 24px);
+        font-weight: 600;
+        line-height: 1.2;
+      }
       /* alternating bg */
       .bg-gold-faint {
         background: var(--ivory-2);
       }
       .bg-white {
         background: var(--white);
+      }
+      .hero-body {
+        position: relative;
+        isolation: isolate;
+      }
+      .hero-body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url("mobile screen background.jpg");
+        background-position: center;
+        background-size: 100% 100vh;
+        background-size: 100% 100dvh;
+        background-repeat: no-repeat;
+      }
+      .hero-body .bg-white,
+      .hero-body .bg-gold-faint {
+        background: rgba(255, 249, 248, 0.832);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
       }
 
       /* =============================================
@@ -493,6 +665,9 @@
         );
         overflow: hidden;
         position: relative;
+        background: rgba(255, 249, 248, 0.832);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
       }
       .saree-band::before {
         content: "";
@@ -607,15 +782,15 @@
       }
       @media (max-width: 1920px) {
         .hero-names {
-          font-size: clamp(48px, 13vw, 100px);
+          font-size: clamp(48px, 14vw, 100px);
         }
       }
       @media (max-width: 1480px) {
         .hero-names {
-          font-size: clamp(48px, 13vw, 75px);
+          font-size: clamp(48px, 14vw, 75px);
         }
       }
-      @media (max-width: 480px) {
+      @media (max-width: 480px), (min-width: 769px) {
         .parents-grid {
           grid-template-columns: 1fr;
           gap: 20px 0;
@@ -702,82 +877,30 @@
         line-height: 1;
       }
 
-      /* =============================================
-   SCHEDULE
-   ============================================= */
-      .sched-wrap {
-        max-width: 440px;
-        margin: 0 auto;
-      }
-      .sched-item {
+      .preshoot-gallery {
         display: grid;
-        grid-template-columns: clamp(70px, 18vw, 90px) 22px 1fr;
-        align-items: center;
-        min-height: 68px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(12px, 3vw, 20px);
       }
-      .sched-time {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(17px, 4vw, 20px);
-        color: var(--ink-soft);
-        text-align: right;
-        padding-right: 8px;
+      .preshoot-photo {
+        padding: 6px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 10px 28px rgba(53, 16, 25, 0.12);
       }
-      .sched-spine {
-        position: relative;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .preshoot-photo img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: calc(var(--r-md) - 5px);
       }
-      .sched-spine::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(
-          180deg,
-          transparent,
-          var(--gold-bright),
-          transparent
-        );
-      }
-      .sched-item:first-child .sched-spine::before {
-        top: 50%;
-      }
-      .sched-item:last-child .sched-spine::before {
-        bottom: 50%;
-      }
-      .sched-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--white);
-        border: 2px solid var(--gold-bright);
-        box-shadow: 0 0 0 3px rgba(184, 134, 26, 0.18);
-        z-index: 1;
-        flex-shrink: 0;
-      }
-      .sched-lbl {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(17px, 4vw, 20px);
-        color: var(--ink);
-        padding-left: 8px;
-      }
-      .sched-sub {
-        font-size: 12px;
-        color: var(--ink-soft);
-        padding-left: 8px;
-        margin-top: -2px;
-        grid-column: 3;
-      }
-      .sched-note {
-        text-align: center;
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: clamp(15px, 3.5vw, 17px);
-        color: var(--ink-soft);
-        margin-top: 34px;
+      .preshoot-photo:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        width: min(70%, 260px);
+        justify-self: center;
       }
 
       /* =============================================
@@ -821,7 +944,7 @@
         text-transform: uppercase;
         padding: 8px 14px;
         border-radius: 999px;
-        box-shadow: 0 4px 12px rgba(184, 134, 26, 0.2);
+        box-shadow: 0 4px 12px rgba(143, 18, 48, 0.2);
         transition: all 0.2s;
       }
       .map-badge:hover {
@@ -884,7 +1007,7 @@
         border: 1px solid var(--line);
         border-radius: var(--r-md);
         padding: clamp(22px, 5vw, 34px) clamp(12px, 4vw, 20px);
-        box-shadow: 0 8px 28px -8px rgba(184, 134, 26, 0.15);
+        box-shadow: 0 8px 28px -8px rgba(143, 18, 48, 0.15);
         position: relative;
         overflow: hidden;
       }
@@ -1239,8 +1362,8 @@
         border-radius: 14px;
         background: linear-gradient(
           135deg,
-          rgba(184, 134, 26, 0.06),
-          rgba(184, 134, 26, 0.12)
+          rgba(143, 18, 48, 0.06),
+          rgba(143, 18, 48, 0.12)
         );
         text-align: center;
       }
@@ -1400,7 +1523,7 @@
         font-family: serif;
         font-size: 56px;
         line-height: 1;
-        color: rgba(184, 134, 26, 0.08);
+        color: rgba(143, 18, 48, 0.08);
         pointer-events: none;
         user-select: none;
       }
@@ -1472,7 +1595,7 @@
         );
         border: 1px dashed var(--gold-border);
         border-radius: var(--r-md);
-        box-shadow: 0 4px 20px -6px rgba(184, 134, 26, 0.07);
+        box-shadow: 0 4px 20px -6px rgba(143, 18, 48, 0.07);
       }
       .wish-empty-icon {
         width: 52px;
@@ -1574,10 +1697,10 @@
       /* =============================================
    MOBILE RESPONSIVE
    ============================================= */
-      @media (max-width: 768px) {
+      @media (max-width: 768px), (min-width: 769px) {
         .hero-inner {
           padding: clamp(50px, 10vw, 80px) clamp(14px, 5vw, 28px)
-            clamp(40px, 8vw, 60px);
+            clamp(0px, 8vw, 60px);
         }
         .hero-strip-top,
         .hero-strip-bot {
@@ -1600,10 +1723,6 @@
         .ceremony-card::before {
           inset: 6px;
           border-radius: 12px;
-        }
-        .sched-item {
-          grid-template-columns: clamp(60px, 16vw, 80px) 20px 1fr;
-          min-height: 60px;
         }
         .datebar {
           gap: clamp(6px, 2vw, 12px);
@@ -1629,7 +1748,7 @@
         }
       }
 
-      @media (max-width: 420px) {
+      @media (max-width: 420px), (min-width: 769px) {
         :root {
           --r-lg: 14px;
           --r-md: 10px;
@@ -1678,18 +1797,22 @@
           bottom: 8px;
         }
         .hero-inner {
-          padding: 50px 12px 40px;
+          padding: 0px 12px 40px;
         }
         .hero-eyebrow {
-          font-size: 8px;
+          font-size: 12px;
+          letter-spacing: 0.24em;
+        }
+        .hero-eyebrow-sub {
+          font-size: 9px;
           letter-spacing: 0.24em;
         }
         .hero-dateline {
-          font-size: 9px;
+          font-size: 14px;
           letter-spacing: 0.16em;
         }
         .hero-venue {
-          font-size: 16px;
+          font-size: 18px;
         }
         section {
           padding: clamp(44px, 8vw, 64px) 0;
@@ -1735,20 +1858,6 @@
         }
         .datebar .dn {
           font-size: clamp(34px, 10vw, 44px);
-        }
-        .sched-item {
-          grid-template-columns: 60px 18px 1fr;
-          min-height: 54px;
-        }
-        .sched-time {
-          font-size: 16px;
-        }
-        .sched-lbl {
-          font-size: 16px;
-        }
-        .sched-note {
-          font-size: 15px;
-          margin-top: 26px;
         }
         .map-shell iframe {
           height: 220px;
@@ -1853,7 +1962,7 @@
         }
       }
 
-      @media (max-width: 480px) {
+      @media (max-width: 480px), (min-width: 769px) {
         .guest-pill-row {
           display: flex;
         }
@@ -1919,19 +2028,21 @@
       }
       .hero-guest {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(16px, 4.5vw, 24px);
+        font-size: clamp(16px, 6.5vw, 24px);
         font-style: italic;
-        color: rgba(255, 255, 255, 0.85);
-        margin: 6px auto 16px;
+        color: rgba(255, 255, 255, 0.924);
+        margin: 20px auto 5px;
         border-bottom: 1.5px solid var(--gold-border);
+        border-top: 1.5px solid var(--gold-border);
         padding-bottom: 4px;
+        padding-top: 4px;
         min-width: 140px;
         text-align: center;
         display: inline-block;
       }
       .ceremony-guest {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(32px, 8vw, 46px);
+        font-size: clamp(30px, 6vw, 34px);
         font-style: italic;
         font-weight: 500;
         color: var(--gold);
@@ -2010,9 +2121,7 @@
         }
       }
 
-      /* =============================================
-   CLOSE BUTTON
-   ============================================= */
+      /* ============================================= CLOSE BUTTON ============================================= */
       #close-btn {
         position: fixed;
         top: 15px;
@@ -2056,15 +2165,14 @@
         color: var(--gold-pale);
       }
 
-      /* =============================================
-   ENVELOPE OPENING OVERLAY
-   ============================================= */
+      /* ============================================= ENVELOPE OPENING OVERLAY ============================================= */
       .env-overlay {
         position: fixed;
         inset: 0;
         z-index: 1000000;
         isolation: isolate;
-        background: radial-gradient(circle at center, #2e2008 0%, #120b02 100%);
+        /* background: radial-gradient(circle at center, #2e2008 0%, #120b02 100%); */
+        background: #2b2b17 url("IMG_4003_2.jpg") center / cover fixed no-repeat;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2075,16 +2183,34 @@
         perspective: 1200px;
         overflow: hidden;
       }
+      .env-background-video {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
       .env-overlay.hide {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
       }
+      @media (max-width: 768px) {
+        .env-overlay {
+          border: 10px solid #141414;
+          /* border-radius: 44px; */
+          outline: 3px solid #e8c060;
+          outline-offset: -7px;
+          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.52);
+        }
+      }
       .env-wrapper {
         position: relative;
-        margin-top: 100px;
+        margin-top: 150px;
         width: min(350px, 90vw);
-        height: min(250px, 60vw);
+        height: min(250px, 64vw);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2105,7 +2231,7 @@
       .env-back-face {
         position: absolute;
         inset: 0;
-        background: #fcf9f2;
+        background: #fff9f8;
         border: 1px solid var(--gold-border);
         border-radius: 6px;
         z-index: 1;
@@ -2158,28 +2284,30 @@
         letter-spacing: 0.25em;
         color: var(--gold);
         text-transform: uppercase;
-        margin-bottom: 6px;
+        margin: 0;
       }
       .env-card-title {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(20px, 5vw, 28px);
+        font-size: clamp(15px, 5vw, 25px);
         color: var(--ink);
         line-height: 1.1;
         font-weight: 500;
+        margin: 0;
       }
       .env-card-amp {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
-        font-size: 14px;
+        font-size: 13px;
         color: var(--gold-bright);
-        margin: 2px 0;
+        margin: 0;
       }
       .env-card-date {
         font-family: "Cinzel", serif;
-        font-size: 8.5px;
+        font-size: 8px;
         letter-spacing: 0.15em;
         color: var(--ink-soft);
         text-transform: uppercase;
+        margin-bottom: 8px;
         margin-top: 8px;
       }
 
@@ -2295,26 +2423,25 @@
         user-select: none;
       }
       .env-prompt {
+        position: relative;
+        z-index: 1;
+        appearance: none;
+        min-height: 44px;
+        padding: 12px 20px;
+        border: 0;
+        background: transparent;
         margin-top: 36px;
         font-family: "Cinzel", serif;
         font-size: clamp(10px, 3vw, 12px);
         letter-spacing: 0.2em;
-        color: var(--gold-light);
+        /* color: var(--gold-light); */
+        color: #2d1f00;
         text-transform: uppercase;
         text-align: center;
-        animation: pulsePrompt 2s infinite ease-in-out;
+        opacity: 0.85;
         cursor: pointer;
-      }
-      @keyframes pulsePrompt {
-        0%,
-        100% {
-          opacity: 0.6;
-          transform: translateY(0);
-        }
-        50% {
-          opacity: 1;
-          transform: translateY(-4px);
-        }
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
 
       /* Prevent body scrolling while envelope is active */
@@ -2322,11 +2449,93 @@
         overflow: hidden !important;
         height: 100vh;
       }
+
+      @media (min-width: 769px) {
+        html {
+          height: 100%;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          background: #2b2b17 url("desktop screen background.png") center /
+            cover fixed no-repeat;
+        }
+
+        body {
+          --device-width: min(430px, calc(100vw - 48px));
+          --device-height: min(900px, calc(100svh - 48px));
+          position: relative;
+          width: var(--device-width);
+          height: var(--device-height);
+          min-height: 0;
+          overflow-x: hidden;
+          overflow-y: auto;
+          border: 10px solid #141414;
+          border-radius: 38px;
+          outline: 2px solid rgba(222, 222, 222, 0.7);
+          background: var(--ivory);
+          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.52);
+          scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+          display: none;
+        }
+
+        body.env-active {
+          height: var(--device-height);
+        }
+
+        .hero-body::before {
+          inset: auto;
+          top: calc((100svh - var(--device-height)) / 2 + 10px);
+          left: calc((100vw - var(--device-width)) / 2 + 10px);
+          width: calc(var(--device-width) - 20px);
+          height: calc(var(--device-height) - 20px);
+          border-radius: 28px;
+          background-size: 100% 100%;
+        }
+
+        .hero-names {
+          font-size: clamp(32px, 10vw, 56px);
+        }
+
+        #close-btn {
+          top: calc((100svh - var(--device-height)) / 2 + 24px);
+          right: calc((100vw - var(--device-width)) / 2 + 24px);
+        }
+
+        #music-btn {
+          right: calc((100vw - var(--device-width)) / 2 + 24px);
+          bottom: calc((100svh - var(--device-height)) / 2 + 24px);
+        }
+
+        .env-overlay {
+          inset: 50% auto auto 50%;
+          width: var(--device-width);
+          height: var(--device-height);
+          border: 10px solid #141414;
+          border-radius: 38px;
+          outline: 2px solid rgba(222, 222, 222, 0.7);
+          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.52);
+          transform: translate(-50%, -50%);
+        }
+      }
     </style>
   </head>
   <body class="env-active">
     <!-- Envelope Opening Screen -->
     <div class="env-overlay" id="envelopeOverlay">
+      <!-- <video
+        class="env-background-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="v1.webm" type="video/webm" />
+      </video> -->
       <div class="env-wrapper" id="envelopeWrapper">
         <div class="envelope" id="envelopeMain">
           <div class="env-back-face"></div>
@@ -2396,7 +2605,9 @@
           </div>
         </div>
       </div>
-      <div class="env-prompt" id="envPrompt">Click to Open</div>
+      <button class="env-prompt" id="envPrompt" type="button">
+        Click to Open
+      </button>
     </div>
 
     <!-- Background Music -->
@@ -2424,11 +2635,10 @@
     <section class="hero" id="top">
       <video
         class="hero-video"
-        autoplay
         muted
         loop
         playsinline
-        preload="auto"
+        preload="none"
         aria-hidden="true"
       >
         <source src="Home banner video.mp4" type="video/mp4" />
@@ -2552,10 +2762,11 @@
         </svg>
 
         <div class="hero-eyebrow">You Are Cordially Invited</div>
-        <div class="hero-guest" id="heroGuest"></div>
+        <div class="hero-eyebrow-sub">to celebrate the wedding of</div>
         <h1 class="hero-names serif">
           Amanda<span class="hero-amp">&amp;</span>Priyankara
         </h1>
+        <div class="hero-guest" id="heroGuest"></div>
         <div class="hero-dateline">Wednesday &middot; 25th November 2026</div>
         <div class="hero-venue serif">
           Wedding Ceremony &middot; Chance Palace
@@ -2572,519 +2783,682 @@
       </div>
       <div class="scroll-cue">
         <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
-
-    <!-- CEREMONY INFO -->
-    <section id="ceremony" class="bg-white">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
+        <div class="scroll-track" aria-hidden="true">
+          <div class="scroll-line"></div>
+          <svg class="scroll-art" viewBox="0 0 20 24">
+            <path d="M10 1.5C6.7 5.1 7.2 8.1 10 10.4c2.8-2.3 3.3-5.3 0-8.9Z" />
+            <path
+              d="M9.6 9.9C6 7.6 3.7 8.1 2 9.5c1.9 2.5 4.6 3.1 7.6 1.6M10.4 9.9c3.6-2.3 5.9-1.8 7.6-.4-1.9 2.5-4.6 3.1-7.6 1.6"
+            />
+            <path d="M10 10.8v10.8m-3.4-3.4 3.4 3.4 3.4-3.4" />
           </svg>
-          <div class="section-eyebrow">Ceremony Info</div>
-          <h2 class="section-title serif">We Joyfully Invite You</h2>
-          <div class="ceremony-guest" id="ceremonyGuest"></div>
-          <p class="section-sub">
-            With hearts full of gratitude, together with their families, we
-            request the pleasure of your company at the Wedding Ceremony of
-          </p>
-        </div>
-
-        <div class="ceremony-card reveal">
-          <svg class="cc-tl" viewBox="0 0 120 120" aria-hidden="true">
-            <g stroke="#b8861a" stroke-width=".8" fill="none" opacity=".75">
-              <path d="M0,90 Q0,0 90,0" />
-              <path d="M8,80 Q8,8 80,8" />
-              <path
-                d="M22,48 Q12,36 22,24 Q32,36 22,48Z"
-                stroke="#c8a840"
-                fill="rgba(200,168,64,0.12)"
-              />
-              <path
-                d="M40,28 Q30,16 40,4 Q50,16 40,28Z"
-                stroke="#c8a840"
-                fill="rgba(200,168,64,0.1)"
-              />
-              <circle
-                cx="8"
-                cy="8"
-                r="4"
-                fill="rgba(184,134,26,0.18)"
-                stroke="#b8861a"
-                stroke-width=".8"
-              />
-            </g>
-          </svg>
-          <svg class="cc-br" viewBox="0 0 120 120" aria-hidden="true">
-            <g stroke="#b8861a" stroke-width=".8" fill="none" opacity=".75">
-              <path d="M0,90 Q0,0 90,0" />
-              <path d="M8,80 Q8,8 80,8" />
-              <path
-                d="M22,48 Q12,36 22,24 Q32,36 22,48Z"
-                stroke="#c8a840"
-                fill="rgba(200,168,64,0.12)"
-              />
-              <path
-                d="M40,28 Q30,16 40,4 Q50,16 40,28Z"
-                stroke="#c8a840"
-                fill="rgba(200,168,64,0.1)"
-              />
-              <circle
-                cx="8"
-                cy="8"
-                r="4"
-                fill="rgba(184,134,26,0.18)"
-                stroke="#b8861a"
-                stroke-width=".8"
-              />
-            </g>
-          </svg>
-
-          <div class="parents-grid">
-            <div class="side">
-              <div class="rel-label">Daughter of</div>
-              <div class="pnames">
-                Mr. H. M. Danapala (Nimal) &amp;<br />Mrs. H. M. Mallika
-              </div>
-            </div>
-            <div class="div-rule"></div>
-            <div class="side">
-              <div class="rel-label rel-label-mobile">Son of</div>
-              <div class="pnames">
-                Mr. A. H. M. Keerthi &amp;<br />Mrs. R. M. A. Rathnayaka
-              </div>
-            </div>
-          </div>
-
-          <div class="couple-display serif">
-            Amanda<span class="camp">&amp;</span>Priyankara
-          </div>
-          <div class="gold-bar"></div>
-          <div class="cer-label">Wedding Ceremony</div>
-          <div class="cer-time serif">0:00 AM</div>
-          <div class="datebar">
-            <span>Wednesday</span>
-            <span class="ds">&middot;</span>
-            <span class="dn serif">25</span>
-            <span class="ds">&middot;</span>
-            <span>November&nbsp;2026</span>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
+    <div class="hero-body">
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
 
-    <!-- SCHEDULE -->
-    <section id="schedule" class="bg-gold-faint">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
-          </svg>
-          <div class="section-eyebrow">The Day Of</div>
-          <h2 class="section-title serif">Wedding Day Schedule</h2>
-        </div>
-        <div class="sched-wrap reveal">
-          <div class="sched-item">
-            <div class="sched-time serif">7:40 AM</div>
-            <div class="sched-spine"><div class="sched-dot"></div></div>
-            <div>
-              <div class="sched-lbl serif">Wedding Ceremony</div>
-              <div class="sched-sub">Chance Palace, Veyangoda</div>
-            </div>
-          </div>
-        </div>
-        <p class="sched-note reveal">
-          Further reception details will follow closer to the day &mdash; thank
-          you for your patience.
-        </p>
-      </div>
-    </section>
-
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
-
-    <!-- VENUE -->
-    <section id="venue" class="bg-white">
-      <div class="wrap venue-wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
-          </svg>
-          <div class="section-eyebrow">The Venue</div>
-          <h2 class="venue-nm serif">Chance Palace</h2>
-          <p class="venue-addr">Kottala Road, Veyangoda 11100, Sri Lanka</p>
-        </div>
-        <div class="map-shell reveal">
-          <a
-            class="map-badge"
-            href="https://maps.app.goo.gl/TmhH6HPK4AyaTPoB7"
-            target="_blank"
-            rel="noopener"
-            >Open in Maps &#8599;</a
-          >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.590610909903!2d80.07456470996067!3d7.173230815243512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e2b8cd5af693%3A0x8a8b38f9c364f54a!2sHotel%20Chance%20Palace!5e0!3m2!1sen!2slk!4v1783006704400!5m2!1sen!2slk"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Chance Palace location"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="btn-row reveal">
-          <a
-            class="pill solid"
-            href="https://maps.app.goo.gl/TmhH6HPK4AyaTPoB7"
-            target="_blank"
-            rel="noopener"
-            >Get Directions</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
-
-    <!-- COUNTDOWN -->
-    <section id="countdown-section" class="bg-gold-faint">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
-          </svg>
-          <div class="section-eyebrow">Counting Down</div>
-          <h2 class="section-title serif">Save the Date</h2>
-        </div>
-        <div class="cal-box reveal">
-          <div class="cal-month">November 2026</div>
-          <div class="cal-grid" id="cal-grid"></div>
-          <div class="countdown" id="countdown">
-            <div class="cd-item">
-              <div class="cd-num serif" id="cd-days">--</div>
-              <div class="cd-lbl">Days</div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-num serif" id="cd-hours">--</div>
-              <div class="cd-lbl">Hours</div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-num serif" id="cd-mins">--</div>
-              <div class="cd-lbl">Mins</div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-num serif" id="cd-secs">--</div>
-              <div class="cd-lbl">Secs</div>
-            </div>
-          </div>
-        </div>
-        <div class="cal-actions reveal">
-          <button class="link-subtle" id="add-cal-btn" type="button">
-            + Add to Calendar
-          </button>
-          <a class="pill dark" href="#rsvp">RSVP Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="bg-white">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
-          </svg>
-          <div class="section-eyebrow">Kindly Respond</div>
-          <h2 class="section-title serif">RSVP</h2>
-          <p class="section-sub">
-            Please let us know by
-            <strong style="color: var(--gold)">25th October 2026</strong> so we
-            can prepare for your arrival.
-          </p>
-        </div>
-        <div class="rsvp-card reveal">
-          <form id="rsvp-form">
-            <div class="field">
-              <label for="rsvp-name">Your Name</label>
-              <input
-                type="text"
-                id="rsvp-name"
-                required
-                placeholder="Full name"
-              />
-            </div>
-            <div class="field">
-              <label>Will you be attending?</label>
-              <div class="attend-group" id="attend-group">
-                <label class="attend-opt active" data-val="yes">
-                  <input type="radio" name="attend" value="yes" checked />
-                  Joyfully Yes
-                </label>
-                <label class="attend-opt" data-val="no">
-                  <input type="radio" name="attend" value="no" /> Regretfully No
-                </label>
-              </div>
-            </div>
-            <div class="field" id="guest-field">
-              <label for="rsvp-guests">Number of Guests (incl. yourself)</label>
-              <div class="guest-stepper" aria-label="Guest count selector">
-                <button
-                  type="button"
-                  class="guest-stepper-btn"
-                  data-action="decrease"
-                  aria-label="Decrease guest count"
-                >
-                  −
-                </button>
-                <input
-                  type="number"
-                  id="rsvp-guests"
-                  min="0"
-                  max="10"
-                  value="1"
-                  inputmode="numeric"
-                />
-                <button
-                  type="button"
-                  class="guest-stepper-btn"
-                  data-action="increase"
-                  aria-label="Increase guest count"
-                >
-                  +
-                </button>
-              </div>
-              <div class="guest-pill-row" id="guest-pill-row">
-                <button type="button" class="guest-pill" data-value="0">
-                  0
-                </button>
-                <button type="button" class="guest-pill" data-value="1">
-                  1
-                </button>
-                <button type="button" class="guest-pill" data-value="2">
-                  2
-                </button>
-                <button type="button" class="guest-pill" data-value="3">
-                  3
-                </button>
-                <button type="button" class="guest-pill" data-value="4">
-                  4
-                </button>
-                <button type="button" class="guest-pill" data-value="5">
-                  5
-                </button>
-              </div>
-            </div>
-            <div class="field">
-              <label for="rsvp-note">Message (optional)</label>
-              <textarea
-                id="rsvp-note"
-                placeholder="A note for the couple..."
-              ></textarea>
-            </div>
-            <button type="submit" class="submit-btn" id="rsvp-submit">
-              Send RSVP
-            </button>
-            <div class="form-msg" id="rsvp-msg"></div>
-          </form>
-          <div class="contact-strip">
-            <div class="contact-title">Contact Us</div>
-            <div class="contact-row">
-              <div class="contact-item">
-                <span class="contact-label">Amanda</span>
-                <a href="tel:+94711311899">071 131 1899</a>
-              </div>
-              <div class="contact-item">
-                <span class="contact-label">Priyankara</span>
-                <a href="tel:+94755969422">075 596 9422</a>
-              </div>
-            </div>
-          </div>
-          <div class="privacy-note">
-            Your RSVP details are sent directly to the couple and kept private.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
-
-    <!-- BEST WISHES -->
-    <section id="wishes" class="bg-gold-faint">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <svg
-            viewBox="0 0 260 28"
-            style="
-              display: block;
-              width: clamp(180px, 60vw, 260px);
-              margin: 0 auto 10px;
-            "
-            aria-hidden="true"
-          >
-            <g stroke="#b8861a" stroke-width="1" fill="none">
-              <line x1="0" y1="14" x2="94" y2="14" />
-              <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
-              <line x1="154" y1="14" x2="260" y2="14" />
-              <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
-            </g>
-          </svg>
-          <div class="section-eyebrow">Guest Book</div>
-          <h2 class="section-title serif">Best Wishes</h2>
-          <p class="section-sub">
-            Leave a blessing for the couple to treasure forever.
-          </p>
-        </div>
-        <div class="wish-form-box reveal">
-          <form id="wish-form">
-            <div class="field">
-              <label for="wish-name">Your Name</label>
-              <input
-                type="text"
-                id="wish-name"
-                required
-                placeholder="Full name"
-              />
-            </div>
-            <div class="field">
-              <label for="wish-text">Your Wishes</label>
-              <textarea
-                id="wish-text"
-                required
-                placeholder="Leave a blessing for Amanda &amp; Priyankara..."
-                style="min-height: 88px"
-              ></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Wishes</button>
-            <div class="form-msg" id="wish-msg"></div>
-          </form>
-        </div>
-        <div class="wish-wall-header reveal">
-          <div class="wish-wall-divider">
-            <span class="divider-line"></span>
-            <span class="divider-icon">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                  fill="var(--gold-pale)"
-                  stroke="var(--gold)"
-                />
-              </svg>
-            </span>
-            <span class="divider-line"></span>
-          </div>
-          <div class="wish-wall-pill">
-            <i
-              class="fa-regular fa-comments"
-              style="color: var(--gold); font-size: 11px"
-            ></i>
-            <span>Guestbook Messages</span>
-            <span class="wish-live-dot" title="Live updates"></span>
-          </div>
-          <p class="wish-wall-sub">
-            Warm blessings and wishes shared by family &amp; friends
-          </p>
-        </div>
-        <div class="wish-wall" id="wish-wall">
-          <div class="wish-empty-box">
-            <div class="wish-empty-icon">
-              <i class="fa-solid fa-heart"></i>
-            </div>
-            <div class="wish-empty-title">Awaiting the First Blessing</div>
-            <p class="wish-empty-sub">
-              No wishes have been shared yet.<br />
-              Be the first to pen a loving blessing for Amanda &amp; Priyankara
-              above!
+      <!-- CEREMONY INFO -->
+      <section id="ceremony" class="bg-white">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Wedding Info</div>
+            <h2 class="section-title serif">We Joyfully Invite You</h2>
+            <div class="ceremony-guest" id="ceremonyGuest"></div>
+            <p class="section-sub">
+              With hearts full of gratitude, together with their families, we
+              request the pleasure of your company at the Wedding Celebration
+              of
             </p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SAREE BAND -->
-    <div class="saree-band" aria-hidden="true"></div>
+          <div class="ceremony-card reveal">
+            <svg class="cc-tl" viewBox="0 0 120 120" aria-hidden="true">
+              <g stroke="#b8861a" stroke-width=".8" fill="none" opacity=".75">
+                <path d="M0,90 Q0,0 90,0" />
+                <path d="M8,80 Q8,8 80,8" />
+                <path
+                  d="M22,48 Q12,36 22,24 Q32,36 22,48Z"
+                  stroke="#c8a840"
+                  fill="rgba(200,168,64,0.12)"
+                />
+                <path
+                  d="M40,28 Q30,16 40,4 Q50,16 40,28Z"
+                  stroke="#c8a840"
+                  fill="rgba(200,168,64,0.1)"
+                />
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="4"
+                  fill="rgba(200,168,64,0.12)"
+                  stroke="#b8861a"
+                  stroke-width=".8"
+                />
+              </g>
+            </svg>
+            <svg class="cc-br" viewBox="0 0 120 120" aria-hidden="true">
+              <g stroke="#b8861a" stroke-width=".8" fill="none" opacity=".75">
+                <path d="M0,90 Q0,0 90,0" />
+                <path d="M8,80 Q8,8 80,8" />
+                <path
+                  d="M22,48 Q12,36 22,24 Q32,36 22,48Z"
+                  stroke="#c8a840"
+                  fill="rgba(200,168,64,0.12)"
+                />
+                <path
+                  d="M40,28 Q30,16 40,4 Q50,16 40,28Z"
+                  stroke="#c8a840"
+                  fill="rgba(200,168,64,0.1)"
+                />
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="4"
+                  fill="rgba(200,168,64,0.12)"
+                  stroke="#b8861a"
+                  stroke-width=".8"
+                />
+              </g>
+            </svg>
+
+            <div class="parents-grid">
+              <div class="side">
+                <div class="rel-label">Daughter of</div>
+                <div class="pnames">
+                  Mr. H. M. Danapala (Nimal) &amp;<br />Mrs. H. M. Mallika
+                </div>
+              </div>
+              <div class="div-rule"></div>
+              <div class="side">
+                <div class="rel-label rel-label-mobile">Son of</div>
+                <div class="pnames">
+                  Mr. A. H. M. Keerthinanda &amp;<br />Mrs. R. M. A. Rathnayaka
+                </div>
+              </div>
+            </div>
+
+            <div class="couple-display serif">
+              Amanda<span class="camp">&amp;</span>Priyankara
+            </div>
+            <div class="gold-bar"></div>
+            <div class="cer-label">Wedding Ceremony</div>
+            <div class="cer-time serif">6:30 AM</div>
+            <div class="datebar">
+              <span>Wednesday</span>
+              <span class="ds">&middot;</span>
+              <span class="dn serif">25</span>
+              <span class="ds">&middot;</span>
+              <span>November&nbsp;2026</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- WEDDING DAY SCHEDULE -->
+      <section id="schedule" class="bg-gold-faint">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Schedule</div>
+            <h2 class="section-title serif">The Day's Celebrations</h2>
+          </div>
+          <div class="schedule-list">
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 306deg; --hour-angle: 205.5deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">6:51 AM</div>
+                <h3 class="schedule-event">Guest Arrival &amp; Welcome</h3>
+              </div>
+            </article>
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 168deg; --hour-angle: 224deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">7:28 AM</div>
+                <h3 class="schedule-event">Registration</h3>
+              </div>
+            </article>
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 240deg; --hour-angle: 230deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">7:40 AM</div>
+                <h3 class="schedule-event">Poruwa Ceremony</h3>
+              </div>
+            </article>
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 180deg; --hour-angle: 315deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">10:30 AM</div>
+                <h3 class="schedule-event">Group Photos</h3>
+              </div>
+            </article>
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 180deg; --hour-angle: 345deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">11:30 AM</div>
+                <h3 class="schedule-event">Wedding Reception</h3>
+              </div>
+            </article>
+            <article class="schedule-card reveal">
+              <div
+                class="schedule-clock"
+                style="--minute-angle: 180deg; --hour-angle: 135deg"
+                aria-hidden="true"
+              >
+                <span class="schedule-clock-dot"></span>
+              </div>
+              <div>
+                <div class="schedule-time">4:30 PM</div>
+                <h3 class="schedule-event">The Send-Off</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- PRESHOOT GALLERY -->
+      <section id="preshoot" class="bg-gold-faint">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Our Preshoot</div>
+            <h2 class="section-title serif">Moments Before Forever</h2>
+          </div>
+          <div class="preshoot-gallery reveal">
+            <figure class="preshoot-photo">
+              <img
+                src="img.jpg"
+                alt="Priyankara and Amanda's preshoot portrait"
+                width="3024"
+                height="4032"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="preshoot-photo">
+              <img
+                src="img.jpg"
+                alt="Priyankara and Amanda together at the beach"
+                width="3024"
+                height="4032"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="preshoot-photo">
+              <img
+                src="img.jpg"
+                alt="Priyankara and Amanda sharing a preshoot moment"
+                width="3024"
+                height="4032"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="preshoot-photo">
+              <img
+                src="img.jpg"
+                alt="Priyankara and Amanda in their preshoot outfits"
+                width="3024"
+                height="4032"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="preshoot-photo">
+              <img
+                src="img.jpg"
+                alt="A favorite preshoot portrait of Priyankara and Amanda"
+                width="3024"
+                height="4032"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- VENUE -->
+      <section id="venue" class="bg-white">
+        <div class="wrap venue-wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">The Venue</div>
+            <h2 class="venue-nm serif">Chance Palace</h2>
+            <p class="venue-addr">Kottala Road, Veyangoda 11100, Sri Lanka</p>
+          </div>
+          <div class="map-shell reveal">
+            <a
+              class="map-badge"
+              href="https://maps.app.goo.gl/TmhH6HPK4AyaTPoB7"
+              target="_blank"
+              rel="noopener"
+              >Open in Maps &#8599;</a
+            >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.590610909903!2d80.07456470996067!3d7.173230815243512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e2b8cd5af693%3A0x8a8b38f9c364f54a!2sHotel%20Chance%20Palace!5e0!3m2!1sen!2slk!4v1783006704400!5m2!1sen!2slk"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Chance Palace location"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="btn-row reveal">
+            <a
+              class="pill solid"
+              href="https://maps.app.goo.gl/TmhH6HPK4AyaTPoB7"
+              target="_blank"
+              rel="noopener"
+              >Get Directions</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- COUNTDOWN -->
+      <section id="countdown-section" class="bg-gold-faint">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Counting Down</div>
+            <h2 class="section-title serif">Save the Date</h2>
+          </div>
+          <div class="cal-box reveal">
+            <div class="cal-month">November 2026</div>
+            <div class="cal-grid" id="cal-grid"></div>
+            <div class="countdown" id="countdown">
+              <div class="cd-item">
+                <div class="cd-num serif" id="cd-days">--</div>
+                <div class="cd-lbl">Days</div>
+              </div>
+              <div class="cd-item">
+                <div class="cd-num serif" id="cd-hours">--</div>
+                <div class="cd-lbl">Hours</div>
+              </div>
+              <div class="cd-item">
+                <div class="cd-num serif" id="cd-mins">--</div>
+                <div class="cd-lbl">Mins</div>
+              </div>
+              <div class="cd-item">
+                <div class="cd-num serif" id="cd-secs">--</div>
+                <div class="cd-lbl">Secs</div>
+              </div>
+            </div>
+          </div>
+          <div class="cal-actions reveal">
+            <button class="link-subtle" id="add-cal-btn" type="button">
+              + Add to Calendar
+            </button>
+            <a class="pill dark" href="#rsvp">RSVP Now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- RSVP -->
+      <section id="rsvp" class="bg-white">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Kindly Respond</div>
+            <h2 class="section-title serif">RSVP</h2>
+            <p class="section-sub">
+              Please let us know by
+              <strong style="color: var(--gold)">25th November 2026</strong> so
+              we can prepare for your arrival.
+            </p>
+          </div>
+          <div class="rsvp-card reveal">
+            <form id="rsvp-form">
+              <div class="field">
+                <label for="rsvp-name">Your Name</label>
+                <input
+                  type="text"
+                  id="rsvp-name"
+                  required
+                  placeholder="Full name"
+                />
+              </div>
+              <div class="field">
+                <label>Will you be attending?</label>
+                <div class="attend-group" id="attend-group">
+                  <label class="attend-opt active" data-val="yes">
+                    <input type="radio" name="attend" value="yes" checked />
+                    Joyfully Yes
+                  </label>
+                  <label class="attend-opt" data-val="no">
+                    <input type="radio" name="attend" value="no" /> Regretfully
+                    No
+                  </label>
+                </div>
+              </div>
+              <div class="field" id="guest-field">
+                <label for="rsvp-guests"
+                  >Number of Guests (incl. yourself)</label
+                >
+                <div class="guest-stepper" aria-label="Guest count selector">
+                  <button
+                    type="button"
+                    class="guest-stepper-btn"
+                    data-action="decrease"
+                    aria-label="Decrease guest count"
+                  >
+                    −
+                  </button>
+                  <input
+                    type="number"
+                    id="rsvp-guests"
+                    min="0"
+                    max="10"
+                    value="1"
+                    inputmode="numeric"
+                  />
+                  <button
+                    type="button"
+                    class="guest-stepper-btn"
+                    data-action="increase"
+                    aria-label="Increase guest count"
+                  >
+                    +
+                  </button>
+                </div>
+                <div class="guest-pill-row" id="guest-pill-row">
+                  <button type="button" class="guest-pill" data-value="0">
+                    0
+                  </button>
+                  <button type="button" class="guest-pill" data-value="1">
+                    1
+                  </button>
+                  <button type="button" class="guest-pill" data-value="2">
+                    2
+                  </button>
+                  <button type="button" class="guest-pill" data-value="3">
+                    3
+                  </button>
+                  <button type="button" class="guest-pill" data-value="4">
+                    4
+                  </button>
+                  <button type="button" class="guest-pill" data-value="5">
+                    5
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="rsvp-note">Message (optional)</label>
+                <textarea
+                  id="rsvp-note"
+                  placeholder="A note for the couple..."
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="rsvp-submit">
+                Send RSVP
+              </button>
+              <div class="form-msg" id="rsvp-msg"></div>
+            </form>
+            <div class="contact-strip">
+              <div class="contact-title">Contact Us</div>
+              <div class="contact-row">
+                <div class="contact-item">
+                  <span class="contact-label">Priyankara</span>
+                  <a href="tel:+94755969422">075 596 9422</a>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-label">Amanda</span>
+                  <a href="tel:+94711311899">071 131 1899</a>
+                </div>
+              </div>
+            </div>
+            <div class="privacy-note">
+              Your RSVP details are sent directly to the couple and kept
+              private.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+
+      <!-- BEST WISHES -->
+      <section id="wishes" class="bg-gold-faint">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <svg
+              viewBox="0 0 260 28"
+              style="
+                display: block;
+                width: clamp(180px, 60vw, 260px);
+                margin: 0 auto 10px;
+              "
+              aria-hidden="true"
+            >
+              <g stroke="#b8861a" stroke-width="1" fill="none">
+                <line x1="0" y1="14" x2="94" y2="14" />
+                <path d="M98,14 Q111,2 124,14 Q137,26 150,14" />
+                <line x1="154" y1="14" x2="260" y2="14" />
+                <circle cx="124" cy="5" r="2.5" fill="#b8861a" stroke="none" />
+              </g>
+            </svg>
+            <div class="section-eyebrow">Guest Book</div>
+            <h2 class="section-title serif">Best Wishes</h2>
+            <p class="section-sub">
+              Leave a blessing for the couple to treasure forever.
+            </p>
+          </div>
+          <div class="wish-form-box reveal">
+            <form id="wish-form">
+              <div class="field">
+                <label for="wish-name">Your Name</label>
+                <input
+                  type="text"
+                  id="wish-name"
+                  required
+                  placeholder="Full name"
+                />
+              </div>
+              <div class="field">
+                <label for="wish-text">Your Wishes</label>
+                <textarea
+                  id="wish-text"
+                  required
+                  placeholder="Leave a blessing for Priyankara &amp; Amanda..."
+                  style="min-height: 88px"
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Wishes</button>
+              <div class="form-msg" id="wish-msg"></div>
+            </form>
+          </div>
+          <div class="wish-wall-header reveal">
+            <div class="wish-wall-divider">
+              <span class="divider-line"></span>
+              <span class="divider-icon">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    fill="var(--gold-pale)"
+                    stroke="var(--gold)"
+                  />
+                </svg>
+              </span>
+              <span class="divider-line"></span>
+            </div>
+            <div class="wish-wall-pill">
+              <i
+                class="fa-regular fa-comments"
+                style="color: var(--gold); font-size: 11px"
+              ></i>
+              <span>Guestbook Messages</span>
+              <span class="wish-live-dot" title="Live updates"></span>
+            </div>
+            <p class="wish-wall-sub">
+              Warm blessings and wishes shared by family &amp; friends
+            </p>
+          </div>
+          <div class="wish-wall" id="wish-wall">
+            <div class="wish-empty-box">
+              <div class="wish-empty-icon">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <div class="wish-empty-title">Awaiting the First Blessing</div>
+              <p class="wish-empty-sub">
+                No wishes have been shared yet.<br />
+                Be the first to pen a loving blessing for Priyankara &amp;
+                Amanda above!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAREE BAND -->
+      <div class="saree-band" aria-hidden="true"></div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -3118,7 +3492,7 @@
         });
 
         /* Countdown */
-        var target = new Date("2026-11-25T07:40:00+05:30").getTime();
+        var target = new Date("2026-11-28T18:30:00+05:30").getTime();
         function tick() {
           var diff = Math.max(0, target - Date.now());
           var d = Math.floor(diff / 86400000);
@@ -3158,7 +3532,7 @@
         }
         for (var day = 1; day <= 30; day++) {
           var el2 = document.createElement("div");
-          el2.className = "cal-day" + (day === 25 ? " hl" : "");
+          el2.className = "cal-day" + (day === 28 ? " hl" : "");
           el2.textContent = day;
           g.appendChild(el2);
         }
@@ -3170,17 +3544,17 @@
             var ics = [
               "BEGIN:VCALENDAR",
               "VERSION:2.0",
-              "PRODID:-//Amanda & Priyankara Wedding//EN",
+              "PRODID:-//Priyankara & Amanda Wedding//EN",
               "BEGIN:VEVENT",
-              "UID:" + Date.now() + "@amandapriyankara.wedding",
+              "UID:" + Date.now() + "@priyankaraamanda.wedding",
               "DTSTAMP:" +
                 new Date().toISOString().replace(/[-:]/g, "").split(".")[0] +
                 "Z",
-              "DTSTART:20261125T024000Z",
-              "DTEND:20261125T053000Z",
-              "SUMMARY:Amanda & Priyankara - Wedding Ceremony",
-              "LOCATION:Chance Palace, Kottala Road, Veyangoda 11100, Sri Lanka",
-              "DESCRIPTION:Wedding Ceremony of Amanda & Priyankara",
+              "DTSTART:20261128T130000Z",
+              "DTEND:20261128T155000Z",
+              "SUMMARY:Priyankara & Amanda - Wedding Celebration",
+              "LOCATION:In front of Gampahawaththa, Bogolla Road, Hettipola",
+              "DESCRIPTION:Wedding Celebration of Priyankara & Amanda",
               "END:VEVENT",
               "END:VCALENDAR",
             ].join("\r\n");
@@ -3537,7 +3911,7 @@
               );
 
               var msgEl = document.getElementById("wish-msg");
-              msgEl.style.color = "#7b5b1e";
+              msgEl.style.color = "#8a4d5a";
               msgEl.innerHTML =
                 '<div style="font-family: \'Cormorant Garamond\', serif; font-size: 20px; font-weight: 700; color: var(--gold-dark); margin-bottom: 2px; font-style: normal;">Thank You!</div><div style="font-size: 13px; color: var(--ink-mid); font-style: normal;">Your submission has been received.</div>';
 
@@ -3563,6 +3937,7 @@
         var wrapper = document.getElementById("envelopeWrapper");
         var seal = document.getElementById("waxSeal");
         var promptEl = document.getElementById("envPrompt");
+        var heroVideo = document.querySelector(".hero-video");
         var isOpened = false;
 
         /* --- Music & Control references --- */
@@ -3627,6 +4002,10 @@
               bgMusic.pause();
               bgMusic.currentTime = 0;
             }
+            if (heroVideo) {
+              heroVideo.pause();
+              heroVideo.currentTime = 0;
+            }
             musicPlaying = false;
             updateMusicUI();
 
@@ -3642,6 +4021,8 @@
               overlay.classList.remove("hide");
             }
             document.body.classList.add("env-active");
+            document.body.classList.remove("animations-active");
+            window.dispatchEvent(new Event("invitation:reset"));
 
             // Reset envelope wrapper visual states
             setTimeout(function () {
@@ -3656,8 +4037,25 @@
           if (isOpened) return;
           isOpened = true;
 
+          if (heroVideo) {
+            try {
+              heroVideo.muted = true;
+              var videoPlayback = heroVideo.play();
+              if (videoPlayback && typeof videoPlayback.catch === "function") {
+                videoPlayback.catch(function (error) {
+                  console.warn("Hero video playback could not start:", error);
+                });
+              }
+            } catch (error) {
+              console.warn("Hero video playback could not start:", error);
+            }
+          }
+
           // Start music immediately (user gesture allows autoplay)
           startMusic();
+
+          document.body.classList.add("animations-active");
+          window.dispatchEvent(new Event("invitation:opened"));
 
           // Add open class to envelope to trigger CSS flip and slide-up animations
           wrapper.classList.add("open");
@@ -4049,7 +4447,7 @@
             this.pulseSpeed = Math.random() * 0.03 + 0.01;
             this.pulseTime = Math.random() * 100;
             const types = [
-              "rgba(184, 134, 26, ",
+              "rgba(143, 18, 48, ",
               "rgba(242, 140, 160, ",
               "rgba(219, 76, 102, ",
             ];
@@ -4096,8 +4494,12 @@
         const butterflies = Array.from({ length: 6 }, () => new Butterfly());
         const petals = Array.from({ length: 15 }, () => new Petal());
         const hearts = Array.from({ length: 12 }, () => new Heart());
+        let animationFrameId = null;
 
         function animate() {
+          animationFrameId = null;
+          if (!document.body.classList.contains("animations-active")) return;
+
           ctx.clearRect(0, 0, width, height);
 
           ctx.save();
@@ -4118,10 +4520,21 @@
 
           ctx.restore();
 
-          requestAnimationFrame(animate);
+          animationFrameId = requestAnimationFrame(animate);
         }
 
-        animate();
+        window.addEventListener("invitation:opened", () => {
+          if (animationFrameId === null) {
+            animationFrameId = requestAnimationFrame(animate);
+          }
+        });
+        window.addEventListener("invitation:reset", () => {
+          if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+          ctx.clearRect(0, 0, width, height);
+        });
       })();
     </script>
   </body>
