@@ -553,6 +553,11 @@
         border: 1px solid rgba(158, 108, 0, 0.65);
         border-radius: 18px;
         background: rgba(255, 255, 255, 0.35);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease,
+          background-color 0.3s ease;
       }
       .schedule-clock {
         position: relative;
@@ -576,6 +581,23 @@
             transparent calc(50% + 0.5px)
           ),
           rgba(212, 160, 48, 0.08);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          background-color 0.3s ease;
+      }
+      @media (hover: hover) {
+        .schedule-card.reveal.visible:hover {
+          transform: translateY(-1px);
+          border-color: rgba(158, 108, 0, 0.9);
+          background: rgba(255, 255, 255, 0.756);
+          box-shadow: 0 12px 28px rgba(107, 73, 14, 0.14);
+        }
+        .schedule-card:hover .schedule-clock {
+          transform: scale(1.06);
+          background-color: rgba(212, 160, 48, 0.16);
+          box-shadow: 0 0 18px rgba(184, 134, 26, 0.2);
+        }
       }
       .schedule-clock::before,
       .schedule-clock::after {
