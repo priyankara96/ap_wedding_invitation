@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Allison&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -392,9 +392,9 @@
         margin-bottom: 10px;
       }
       .hero-names {
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Allison", cursive;
         font-size: clamp(48px, 13vw, 75px);
-        font-weight: 500;
+        font-weight: 400;
         color: #fff;
         line-height: 1;
         text-shadow: 0 2px 20px rgba(34, 6, 15, 0.55);
@@ -1195,7 +1195,7 @@
       }
       .link-subtle {
         font-size: 12px;
-        font-family: "Montserrat", sans-serif;
+        font-family: "DM Sans", sans-serif;
         color: var(--ink-soft);
         text-decoration: underline;
         text-underline-offset: 3px;
@@ -2741,8 +2741,8 @@
         }
         20% {
           opacity: 1;
-          transform: translate(calc(var(--rand-x, 0px) * 0.3), -20px) scale(1.15)
-            rotate(var(--rand-rot, 10deg));
+          transform: translate(calc(var(--rand-x, 0px) * 0.3), -20px)
+            scale(1.15) rotate(var(--rand-rot, 10deg));
         }
         75% {
           opacity: 0.85;
@@ -3535,9 +3535,6 @@
                   </button>
                 </div>
                 <div class="guest-pill-row" id="guest-pill-row">
-                  <button type="button" class="guest-pill" data-value="0">
-                    0
-                  </button>
                   <button type="button" class="guest-pill" data-value="1">
                     1
                   </button>
@@ -3836,7 +3833,8 @@
 
         document.querySelectorAll(".guest-stepper-btn").forEach(function (btn) {
           btn.addEventListener("click", function () {
-            var current = parseInt(guestInput.value, 10) || 1;
+            var current = parseInt(guestInput.value, 10);
+            if (isNaN(current)) current = 1;
             var delta = btn.dataset.action === "increase" ? 1 : -1;
             syncGuestValue(current + delta);
           });
@@ -3855,6 +3853,8 @@
             syncGuestValue(pill.dataset.value);
           });
         });
+
+        syncGuestValue(guestInput.value);
 
         /* JotForm Submission Helper (Submits strictly once via background frame) */
         function submitToJotform(actionUrl, fields) {
@@ -4300,8 +4300,12 @@
           if (typeof window.createSealBurst === "function") {
             try {
               var rect = seal ? seal.getBoundingClientRect() : null;
-              var bx = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
-              var by = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+              var bx = rect
+                ? rect.left + rect.width / 2
+                : window.innerWidth / 2;
+              var by = rect
+                ? rect.top + rect.height / 2
+                : window.innerHeight / 2;
               window.createSealBurst(bx, by);
             } catch (err) {}
           }
@@ -4790,9 +4794,9 @@
             this.twinkleTime = Math.random() * Math.PI * 2;
             const golds = [
               "245, 215, 130", // champagne gold
-              "212, 160, 48",  // classic rich gold
+              "212, 160, 48", // classic rich gold
               "255, 240, 195", // stardust white-gold
-              "230, 145, 160"  // rose gold blush
+              "230, 145, 160", // rose gold blush
             ];
             this.color = golds[Math.floor(Math.random() * golds.length)];
           }
@@ -4846,7 +4850,7 @@
               "245, 215, 130",
               "212, 160, 48",
               "219, 76, 102",
-              "255, 255, 255"
+              "255, 255, 255",
             ];
             this.color = colors[Math.floor(Math.random() * colors.length)];
           }
@@ -4922,11 +4926,11 @@
             this.life = 1.0;
             this.decay = Math.random() * 0.015 + 0.012;
             const colors = [
-              "rgba(212, 160, 48, ",   // gold
-              "rgba(245, 215, 130, ",  // light gold
-              "rgba(143, 18, 48, ",    // wine red
-              "rgba(242, 140, 160, ",  // rose pink
-              "rgba(255, 255, 255, "   // ivory
+              "rgba(212, 160, 48, ", // gold
+              "rgba(245, 215, 130, ", // light gold
+              "rgba(143, 18, 48, ", // wine red
+              "rgba(242, 140, 160, ", // rose pink
+              "rgba(255, 255, 255, ", // ivory
             ];
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.shape =
@@ -5044,21 +5048,28 @@
         // Pointer move event listener for magical stardust trail
         let lastMove = 0;
         function handlePointer(e) {
-          if (!isAnimationActive || document.body.classList.contains("env-active"))
+          if (
+            !isAnimationActive ||
+            document.body.classList.contains("env-active")
+          )
             return;
           const now = Date.now();
           if (now - lastMove < 30) return;
           lastMove = now;
           const x =
-            e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : null);
+            e.clientX ||
+            (e.touches && e.touches[0] ? e.touches[0].clientX : null);
           const y =
-            e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : null);
+            e.clientY ||
+            (e.touches && e.touches[0] ? e.touches[0].clientY : null);
           if (x != null && y != null) {
             interactiveParticles.push(new InteractiveParticle(x, y));
             if (interactiveParticles.length > 45) interactiveParticles.shift();
           }
         }
-        window.addEventListener("pointermove", handlePointer, { passive: true });
+        window.addEventListener("pointermove", handlePointer, {
+          passive: true,
+        });
         window.addEventListener("touchmove", handlePointer, { passive: true });
 
         // Floating Musical Notes Manager
@@ -5102,7 +5113,10 @@
         const sparkles = Array.from({ length: 24 }, () => new Sparkle());
 
         function animate() {
-          if (!isAnimationActive || document.body.classList.contains("env-active")) {
+          if (
+            !isAnimationActive ||
+            document.body.classList.contains("env-active")
+          ) {
             ctx.clearRect(0, 0, width, height);
             requestAnimationFrame(animate);
             return;
