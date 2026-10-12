@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Amanda & Priyankara &#8212; Wedding Invitation &#183; 25th November
-      2026
+      Amanda & Priyankara &#8212; Wedding Invitation &#183; 25th November 2026
     </title>
     <meta
       name="description"
@@ -372,23 +371,35 @@
       }
       .hero-top-ornament {
         width: clamp(160px, 50vw, 240px);
-        margin-bottom: 18px;
+        /* margin-bottom: 18px; */
         opacity: 0.85;
+        animation: gentleFloat 5.5s ease-in-out infinite alternate;
+      }
+      @keyframes gentleFloat {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-6px);
+        }
       }
       .hero-eyebrow {
         font-family: "Cinzel", serif;
         font-size: clamp(8px, 2.2vw, 11px);
         letter-spacing: 0.32em;
         text-transform: uppercase;
-        color: var(--gold-light);
+        /* color: var(--gold-light); */
+        color: #e8dadb;
         margin-bottom: 10px;
+        margin-top: 20px;
       }
       .hero-eyebrow-sub {
         font-family: "Cinzel", serif;
         font-size: clamp(5px, 2vw, 9px);
         letter-spacing: 0.32em;
         text-transform: uppercase;
-        color: var(--gold-light);
+        /* color: var(--gold-light); */
+        color: #f5f7e5;
         margin-bottom: 10px;
       }
       .hero-names {
@@ -420,7 +431,8 @@
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: clamp(16px, 4.5vw, 22px);
-        color: var(--gold-light);
+        /* color: var(--gold-light); */
+        color: rgba(255, 255, 255, 0.78);
         margin-top: 6px;
       }
       .hero-bot-ornament {
@@ -428,6 +440,16 @@
         margin-top: 24px;
         opacity: 0.65;
         transform: rotate(180deg);
+        animation: gentleFloatRotated 5.5s ease-in-out infinite
+          alternate-reverse;
+      }
+      @keyframes gentleFloatRotated {
+        0% {
+          transform: rotate(180deg) translateY(0);
+        }
+        100% {
+          transform: rotate(180deg) translateY(-6px);
+        }
       }
       .scroll-cue {
         position: absolute;
@@ -445,7 +467,7 @@
         font-size: 10px;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.694);
+        color: rgba(255, 251, 210, 0.74);
       }
       .scroll-track {
         position: relative;
@@ -892,6 +914,9 @@
         letter-spacing: 0;
         text-transform: none;
         line-height: 1;
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
       }
       .datebar .ds {
         color: var(--gold);
@@ -2023,11 +2048,11 @@
           letter-spacing: 0.24em;
         }
         .hero-dateline {
-          font-size: 14px;
+          font-size: 13px;
           letter-spacing: 0.16em;
         }
         .hero-venue {
-          font-size: 18px;
+          font-size: 17px;
         }
         section {
           padding: clamp(44px, 8vw, 64px) 0;
@@ -2246,11 +2271,12 @@
         font-size: clamp(16px, 6.5vw, 24px);
         font-style: italic;
         color: rgba(255, 255, 255, 0.924);
-        margin: 20px auto 5px;
-        border-bottom: 1.5px solid var(--gold-border);
-        border-top: 1.5px solid var(--gold-border);
-        padding-bottom: 4px;
-        padding-top: 4px;
+        margin: 0px auto 5px;
+        /* border-bottom: 1.5px solid var(--gold-border); */
+        border-bottom: 1.5px solid rgba(184, 134, 26, 0.35);
+        /* border-top: 1.5px solid var(--gold-border); */
+        /* padding-bottom: 4px; */
+        /* padding-top: 4px; */
         min-width: 140px;
         text-align: center;
         display: inline-block;
@@ -3125,13 +3151,13 @@
           </g>
         </svg>
 
+        <div class="hero-guest" id="heroGuest"></div>
         <div class="hero-eyebrow">You Are Cordially Invited</div>
         <div class="hero-eyebrow-sub">to celebrate the wedding of</div>
         <h1 class="hero-names serif">
           Amanda<span class="hero-amp">&</span>Priyankara
         </h1>
-        <div class="hero-guest" id="heroGuest"></div>
-        <div class="hero-dateline">Wednesday &middot; 25th November 2026</div>
+        <div class="hero-dateline">on Wednesday &middot; 25th November 2026</div>
         <div class="hero-venue serif">
           Wedding Ceremony &middot; Chance Palace
         </div>
@@ -3843,8 +3869,8 @@
               <div class="wish-empty-title">Awaiting the First Blessing</div>
               <p class="wish-empty-sub">
                 No wishes have been shared yet.<br />
-                Be the first to pen a loving blessing for Priyankara &
-                Amanda above!
+                Be the first to pen a loving blessing for Priyankara & Amanda
+                above!
               </p>
             </div>
           </div>
@@ -3866,8 +3892,8 @@
         as we begin this beautiful new chapter together.
       </p>
       <div class="footer-fine">
-        With Love &mdash; Amanda & Priyankara &middot; 25 &middot; 11
-        &middot; 2026
+        With Love &mdash; Amanda & Priyankara &middot; 25 &middot; 11 &middot;
+        2026
       </div>
     </footer>
 
