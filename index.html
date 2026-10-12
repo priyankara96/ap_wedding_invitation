@@ -957,6 +957,113 @@
         width: min(70%, 260px);
         justify-self: center;
       }
+      .preshoot-photo {
+        cursor: zoom-in;
+      }
+      .photo-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 1000001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(20, 10, 14, 0.94);
+      }
+      .photo-lightbox[hidden] {
+        display: none;
+      }
+      .photo-lightbox-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .photo-lightbox-image {
+        display: block;
+        max-width: min(100%, 1100px);
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: var(--r-md);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.4);
+        pointer-events: auto;
+      }
+      .photo-lightbox-control {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 30px;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+      .photo-lightbox-control:hover {
+        transform: scale(1.06);
+        background: rgba(255, 255, 255, 0.24);
+      }
+      .photo-lightbox-close {
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+      }
+      .photo-lightbox-prev {
+        left: 20px;
+      }
+      .photo-lightbox-next {
+        right: 20px;
+      }
+      .photo-lightbox-count {
+        position: absolute;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font:
+          500 14px "Cinzel",
+          serif;
+        letter-spacing: 0.08em;
+      }
+      body.photo-lightbox-open {
+        overflow: hidden;
+      }
+      body.photo-lightbox-open #close-btn {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      @media (max-width: 600px) {
+        .photo-lightbox {
+          padding: 16px 56px;
+        }
+        .photo-lightbox-control {
+          width: 40px;
+          height: 40px;
+          font-size: 26px;
+        }
+        .photo-lightbox-close {
+          top: 12px;
+          right: 12px;
+        }
+        .photo-lightbox-prev {
+          left: 8px;
+        }
+        .photo-lightbox-next {
+          right: 8px;
+        }
+        .photo-lightbox-count {
+          bottom: 10px;
+        }
+      }
 
       /* =============================================
    VENUE
@@ -2314,8 +2421,8 @@
       @media (max-width: 768px) {
         .env-overlay {
           border: 10px solid #141414;
-          /* border-radius: 44px; */
-          outline: 3px solid #e8c060;
+          border-radius: 20px;
+          outline: 1px solid #e8c060;
           outline-offset: -7px;
           box-shadow: 0 25px 80px rgba(0, 0, 0, 0.52);
         }
@@ -2898,7 +3005,7 @@
         preload="none"
         aria-hidden="true"
       >
-        <source src="Home banner video.mp4" type="video/mp4" />
+        <source src="Home banner video.webm" type="video/webm" />
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-frame"></div>
@@ -3169,6 +3276,41 @@
         </div>
       </section>
 
+      <div
+        class="photo-lightbox"
+        id="preshoot-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Preshoot photo viewer"
+        hidden
+      >
+        <div class="photo-lightbox-content">
+          <img class="photo-lightbox-image" alt="" />
+        </div>
+        <button
+          class="photo-lightbox-control photo-lightbox-close"
+          type="button"
+          aria-label="Close photo viewer"
+        >
+          &times;
+        </button>
+        <button
+          class="photo-lightbox-control photo-lightbox-prev"
+          type="button"
+          aria-label="Previous photo"
+        >
+          &#10094;
+        </button>
+        <button
+          class="photo-lightbox-control photo-lightbox-next"
+          type="button"
+          aria-label="Next photo"
+        >
+          &#10095;
+        </button>
+        <div class="photo-lightbox-count" aria-live="polite"></div>
+      </div>
+
       <!-- SAREE BAND -->
       <div class="saree-band" aria-hidden="true"></div>
 
@@ -3307,7 +3449,7 @@
           <div class="preshoot-gallery reveal">
             <figure class="preshoot-photo">
               <img
-                src="img.jpg"
+                src="pa_01.webp"
                 alt="Priyankara and Amanda's preshoot portrait"
                 width="3024"
                 height="4032"
@@ -3317,7 +3459,7 @@
             </figure>
             <figure class="preshoot-photo">
               <img
-                src="img.jpg"
+                src="pa_02.webp"
                 alt="Priyankara and Amanda together at the beach"
                 width="3024"
                 height="4032"
@@ -3327,7 +3469,7 @@
             </figure>
             <figure class="preshoot-photo">
               <img
-                src="img.jpg"
+                src="pa_03.webp"
                 alt="Priyankara and Amanda sharing a preshoot moment"
                 width="3024"
                 height="4032"
@@ -3335,7 +3477,7 @@
                 decoding="async"
               />
             </figure>
-            <figure class="preshoot-photo">
+            <!-- <figure class="preshoot-photo">
               <img
                 src="img.jpg"
                 alt="Priyankara and Amanda in their preshoot outfits"
@@ -3354,7 +3496,7 @@
                 loading="lazy"
                 decoding="async"
               />
-            </figure>
+            </figure> -->
           </div>
         </div>
       </section>
@@ -3742,6 +3884,81 @@
         );
         document.querySelectorAll(".reveal").forEach(function (el) {
           io.observe(el);
+        });
+
+        /* Preshoot photo viewer */
+        var preshootPhotos = Array.from(
+          document.querySelectorAll(".preshoot-photo img"),
+        );
+        var lightbox = document.getElementById("preshoot-lightbox");
+        var lightboxImage = lightbox.querySelector(".photo-lightbox-image");
+        var lightboxCount = lightbox.querySelector(".photo-lightbox-count");
+        var lightboxClose = lightbox.querySelector(".photo-lightbox-close");
+        var activePhotoIndex = 0;
+        var previousFocus = null;
+
+        function showPreshootPhoto(index) {
+          activePhotoIndex =
+            (index + preshootPhotos.length) % preshootPhotos.length;
+          var photo = preshootPhotos[activePhotoIndex];
+          lightboxImage.src = photo.currentSrc || photo.src;
+          lightboxImage.alt = photo.alt;
+          lightboxCount.textContent =
+            activePhotoIndex + 1 + " / " + preshootPhotos.length;
+        }
+
+        function closePreshootViewer() {
+          lightbox.hidden = true;
+          document.body.classList.remove("photo-lightbox-open");
+          if (previousFocus) previousFocus.focus();
+        }
+
+        document
+          .querySelectorAll(".preshoot-photo")
+          .forEach(function (figure, index) {
+            figure.setAttribute("role", "button");
+            figure.setAttribute("tabindex", "0");
+            figure.setAttribute("aria-haspopup", "dialog");
+            figure.setAttribute(
+              "aria-label",
+              "Open preshoot photo " + (index + 1),
+            );
+            figure.addEventListener("click", function () {
+              previousFocus = figure;
+              showPreshootPhoto(index);
+              lightbox.hidden = false;
+              document.body.classList.add("photo-lightbox-open");
+              lightboxClose.focus();
+            });
+            figure.addEventListener("keydown", function (event) {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                figure.click();
+              }
+            });
+          });
+
+        lightboxClose.addEventListener("click", closePreshootViewer);
+        lightbox
+          .querySelector(".photo-lightbox-prev")
+          .addEventListener("click", function () {
+            showPreshootPhoto(activePhotoIndex - 1);
+          });
+        lightbox
+          .querySelector(".photo-lightbox-next")
+          .addEventListener("click", function () {
+            showPreshootPhoto(activePhotoIndex + 1);
+          });
+        lightbox.addEventListener("click", function (event) {
+          if (event.target === lightbox) closePreshootViewer();
+        });
+        document.addEventListener("keydown", function (event) {
+          if (lightbox.hidden) return;
+          if (event.key === "Escape") closePreshootViewer();
+          if (event.key === "ArrowLeft")
+            showPreshootPhoto(activePhotoIndex - 1);
+          if (event.key === "ArrowRight")
+            showPreshootPhoto(activePhotoIndex + 1);
         });
 
         /* Countdown */
