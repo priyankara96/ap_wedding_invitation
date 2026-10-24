@@ -3157,7 +3157,9 @@
         <h1 class="hero-names serif">
           Amanda<span class="hero-amp">&</span>Priyankara
         </h1>
-        <div class="hero-dateline">on Wednesday &middot; 25th November 2026</div>
+        <div class="hero-dateline">
+          on Wednesday &middot; 25th November 2026
+        </div>
         <div class="hero-venue serif">
           Wedding Ceremony &middot; At Chance Palace, Veyangoda
         </div>
@@ -3187,6 +3189,7 @@
     </section>
 
     <div class="hero-body">
+      <div id="SCROLL"></div>
       <!-- SAREE BAND -->
       <div class="saree-band" aria-hidden="true"></div>
 
@@ -3911,6 +3914,16 @@
         document.querySelectorAll(".reveal").forEach(function (el) {
           io.observe(el);
         });
+
+        /* Scroll-cue click → scroll to #SCROLL */
+        var scrollCue = document.querySelector(".scroll-cue");
+        var scrollTarget = document.getElementById("SCROLL");
+        if (scrollCue && scrollTarget) {
+          scrollCue.style.cursor = "pointer";
+          scrollCue.addEventListener("click", function () {
+            scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
 
         /* Preshoot photo viewer */
         var preshootPhotos = Array.from(
